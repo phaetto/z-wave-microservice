@@ -1,0 +1,8 @@
+﻿[
+	{
+		"Id":"Example-Release",
+		"ServiceName":"Example",
+		"DllPath":"Example.dll",
+		"ContextType":"Example.Context"
+	}
+]

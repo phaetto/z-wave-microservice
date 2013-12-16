@@ -1,0 +1,12 @@
+﻿[
+	{
+		"Id":"Example-Integration-Test",
+		"ServiceName":"Example",
+		"DllPath":"Example.dll",
+		"ContextType":"Example.Context",
+		"AdminHost":"localhost",
+		"AdminPort": 11001,
+		"ApiKey":null,
+		"Session":null,
+	}
+]

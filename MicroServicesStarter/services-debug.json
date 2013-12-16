@@ -1,0 +1,8 @@
+﻿[
+	{
+		"Id":"ZWaveContext-Debug",
+		"ServiceName":"ZWaveContext #1",
+		"DllPath":"ZHostService.dll",
+		"ContextType":"ZHostService.ZWaveContext",
+	}
+]

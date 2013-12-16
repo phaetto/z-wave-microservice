@@ -1,0 +1,1217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Schema>
+  <Table name='SePaPa'>
+    <Field name="Id" type="System.Int32" key="true" sort="desc" identity="true" />
+    <Field name="PackageName" type="System.String" size="1024" />
+    <Field name="VersionLabel" type="System.String" size="1024" />
+    <Field name="UploadDate" type="System.DateTime" />
+    <Field name='ApiKey_Id' type='System.Guid' relation='ApiKey' />
+    <Field name='Owner_Name' type='System.String' relation='Owner' />
+  </Table>
+  <Table name='SePaLoPa'>
+    <Field name="PackageName" type="System.String" size="1024" key="true" />
+    <Field name="Id" type="System.Int32" />
+    <Field name="VersionLabel" type="System.String" size="1024" />
+  </Table>
+  <Table name='SePaApKe'>
+    <Field name="Id" type="System.Guid" key="true" sort="asc" />
+    <Field name="CompanyInfo" type="System.String" size="1024" />
+    <Field name="IssueDate" type="System.DateTime" />
+    <Field name="FromDate" type="System.DateTime" />
+    <Field name="ToDate" type="System.DateTime" />
+    <Field name="IsTest" type="System.Boolean" />
+    <Field name='Customer_Name' type='System.String' relation='Customer' />
+    <Field name='Owner_Name' type='System.String' relation='Owner' />
+  </Table>
+  <Table name='SePaLoApEx'>
+    <Field name="Id" type="System.Int32" key="true" sort="asc" identity="true" />
+    <Field name="Message" type="System.String" size="512" />
+    <Field name="Source" type="System.String" size="512" />
+    <Field name="StackTrace" type="System.String" />
+    <Field name="Page" type="System.String" />
+    <Field name="OnDate" type="System.DateTime" />
+    <Field name="IsSolved" type="System.Boolean" />
+    <Field name='ApiKey_Id' type='System.Guid' relation='ApiKey' />
+    <Field name='ParentException_Id' type='System.Int32' relation='ParentException' />
+    <Field name='Owner_Name' type='System.String' relation='Owner' />
+  </Table>
+  <Table name='SePaCu'>
+    <Field name="Name" type="System.String" size="256" sort="asc" key="true" />
+    <Field name="FullNameOfResponsible" type="System.String" size="512" />
+    <Field name="EmailOfResponsible" type="System.String" size="256" />
+    <Field name="Description" type="System.String" size="256" />
+    <Field name="IsPartner" type="System.Boolean" />
+    <Field name="CompanyName" type="System.String" size="256" />
+    <Field name="VATNo" type="System.String" size="256" />
+    <Field name="Phone" type="System.String" size="128" />
+    <Field name="Address" type="System.String" size="256" />
+    <Field name="PostCode" type="System.String" size="64" />
+    <Field name="City" type="System.String" size="128" />
+    <Field name="Country" type="System.String" size="256" />
+    <Field name="InvoiceAddress" type="System.String" size="256" />
+    <Field name="InvoicePostCode" type="System.String" size="64" />
+    <Field name="InvoiceCity" type="System.String" size="128" />
+    <Field name="InvoiceCountry" type="System.String" size="256" />
+    <Field name="IsPaymentAccepted" type="System.Boolean" />
+    <Field name="LastPaymentDate" type="System.DateTime" />
+    <Field name='Partner_Name' type='System.String' relation='Partner' />
+    <Field name='Owner_Name' type='System.String' relation='Owner' />
+  </Table>
+  <Table name='SePaCuUsEn'>
+    <Field name="Id" type="System.Int32" key="true" sort="asc" identity="true" />
+    <Field name='UserLogin_Name' type='System.String' relation='UserLogin' />
+    <Field name='Customer_Name' type='System.String' relation='Customer' />
+    <Field name='Owner_Name' type='System.String' relation='Owner' />
+  </Table>
+  <Table name='SePaPu'>
+    <Field name="Id" type="System.Int32" key="true" sort="desc" identity="true" />
+    <Field name="CreationDate" type="System.DateTime" />
+    <Field name='ApiKey_Id' type='System.Guid' relation='ApiKey' />
+    <Field name='Client_Name' type='System.String' relation='Client' />
+    <Field name='Owner_Name' type='System.String' relation='Owner' />
+  </Table>
+  <Table name='SePaPuLi'>
+    <Field name="Id" type="System.Int32" key="true" sort="asc" identity="true" />
+    <Field name="ProductKey" type="System.String" size="256" />
+    <Field name="ProductDescription" type="System.String" />
+    <Field name="PricePurchased" type="System.Double" />
+    <Field name="RecurrentFeePurchased" type="System.Double" />
+    <Field name="IsPaid" type="System.Boolean" />
+    <Field name='PurchaseOrder_Id' type='System.Int32' relation='PurchaseOrder' />
+    <Field name='Owner_Name' type='System.String' relation='Owner' />
+  </Table>
+  <Table name='SePaSeMoUs'>
+    <Field name="Name" type="System.String" size="128" key="true" sort="asc" />
+    <Field name="PasswordHash" type="System.String" size="256" hashed="true" />
+    <Field name="Email" type="System.String" size="256" />
+    <Field name="Enabled" type="System.Boolean" />
+    <Field name="SecretQuestion" type="System.String" size="512" />
+    <Field name="SecretAnswer" type="System.String" size="512" />
+    <Field name='Owner_Name' type='System.String' relation='Owner' />
+  </Table>
+  <Table name='SePaSeMoSe'>
+    <Field name="SessionToken" type="System.String" size="384" key="true" sort="asc" />
+    <Field name="TimeIssued" type="System.DateTime" />
+    <Field name="TimeIssuedFor" type="System.Int32" />
+    <Field name='User_Name' type='System.String' relation='User' />
+  </Table>
+  <Table name='SePaSeMoUsRi'>
+    <Field name="Name" type="System.String" size="128" key="true" sort="asc" />
+    <Field name="UserName" type="System.String" size="128" key="true" sort="asc"  relation='User' />
+  </Table>
+  <Table name='SePaSeSe'>
+    <Field name="Type" type="System.String" size="256" key="true" sort="asc" />
+    <Field name="Enabled" type="System.Boolean" />
+    <Field name="TimeSessionIsIssued" type="System.Int32" />
+    <Field name="AllowAnonymousAccess" type="System.Boolean" />
+    <Field name="GenerationPasswordLength" type="System.Int32" />
+    <Field name="IPsMustBePreregistered" type="System.Boolean" />
+    <Field name="AllowedIPFailures" type="System.Int32" />
+    <Field name="IPFailureTimeDenying" type="System.Int32" />
+    <Field name="DisableIPFiltering" type="System.Boolean" />
+    <Field name="SessionsPerIPAllowed" type="System.Int32" />
+  </Table>
+  <Table name='SePaSeIPRe'>
+    <Field name="IP" type="System.String" size="64" key="true" sort="asc" />
+    <Field name="Allowed" type="System.Boolean" />
+    <Field name="Failures" type="System.Int32" />
+    <Field name="DenialIssuedUntilTime" type="System.DateTime" />
+  </Table>
+  <Table name='SePaSeIPSeRe'>
+    <Field name="HostName" type="System.String" size="128" key="true" sort="asc" />
+    <Field name="UserAgent" type="System.String" size="128" key="true" sort="asc" />
+    <Field name='IP_IP' type='System.String' relation='IP' />
+    <Field name='Session_SessionToken' type='System.String' relation='Session' />
+  </Table>
+  <Table name='SePaSePaAcCoLi'>
+    <Field name="UserName" type="System.String" size="128" key="true" sort="asc"  relation='User' />
+    <Field name="Id" type="System.Int32" key="true" sort="desc"  relation='Package' />
+  </Table>
+  <Table name='SePaSePaAcCoEn'>
+    <Field name="Descriptor" type="System.String" size="128" key="true" sort="asc" />
+    <Field name="UserName" type="System.String" size="128" key="true" sort="asc"  relation='ACL' />
+    <Field name="Allow" type="System.Boolean" />
+    <Field name="Id" type="System.Int32" key="true" sort="desc"  relation='ACL' />
+  </Table>
+  <Table name='SePaSeApKeAcCoLi'>
+    <Field name="UserName" type="System.String" size="128" key="true" sort="asc"  relation='User' />
+    <Field name="Id" type="System.Guid" key="true" sort="asc"  relation='ApiKey' />
+  </Table>
+  <Table name='SePaSeApKeAcCoEn'>
+    <Field name="Descriptor" type="System.String" size="128" key="true" sort="asc" />
+    <Field name="UserName" type="System.String" size="128" key="true" sort="asc"  relation='ACL' />
+    <Field name="Allow" type="System.Boolean" />
+    <Field name="Id" type="System.Guid" key="true" sort="asc"  relation='ACL' />
+  </Table>
+  <Table name='SePaLoSeApExAcCoLi'>
+    <Field name="UserName" type="System.String" size="128" key="true" sort="asc"  relation='User' />
+    <Field name="Id" type="System.Int32" key="true" sort="asc"  relation='ApplicationException' />
+  </Table>
+  <Table name='SePaLoSeApExAcCoEn'>
+    <Field name="Descriptor" type="System.String" size="128" key="true" sort="asc" />
+    <Field name="UserName" type="System.String" size="128" key="true" sort="asc"  relation='ACL' />
+    <Field name="Allow" type="System.Boolean" />
+    <Field name="Id" type="System.Int32" key="true" sort="asc"  relation='ACL' />
+  </Table>
+  <Table name='SePaSeCuAcCoLi'>
+    <Field name="UserName" type="System.String" size="128" key="true" sort="asc"  relation='User' />
+    <Field name="Name" type="System.String" size="256" sort="asc" key="true"  relation='Customer' />
+  </Table>
+  <Table name='SePaSeCuAcCoEn'>
+    <Field name="Descriptor" type="System.String" size="128" key="true" sort="asc" />
+    <Field name="UserName" type="System.String" size="128" key="true" sort="asc"  relation='ACL' />
+    <Field name="Allow" type="System.Boolean" />
+    <Field name="Name" type="System.String" size="256" sort="asc" key="true"  relation='ACL' />
+  </Table>
+  <Table name='SePaSeCuUsEnAcCoLi'>
+    <Field name="UserName" type="System.String" size="128" key="true" sort="asc"  relation='User' />
+    <Field name="Id" type="System.Int32" key="true" sort="asc"  relation='CustomerUserEntry' />
+  </Table>
+  <Table name='SePaSeCuUsEnAcCoEn'>
+    <Field name="Descriptor" type="System.String" size="128" key="true" sort="asc" />
+    <Field name="UserName" type="System.String" size="128" key="true" sort="asc"  relation='ACL' />
+    <Field name="Allow" type="System.Boolean" />
+    <Field name="Id" type="System.Int32" key="true" sort="asc"  relation='ACL' />
+  </Table>
+  <Table name='SePaSePuAcCoLi'>
+    <Field name="UserName" type="System.String" size="128" key="true" sort="asc"  relation='User' />
+    <Field name="Id" type="System.Int32" key="true" sort="desc"  relation='Purchase' />
+  </Table>
+  <Table name='SePaSePuAcCoEn'>
+    <Field name="Descriptor" type="System.String" size="128" key="true" sort="asc" />
+    <Field name="UserName" type="System.String" size="128" key="true" sort="asc"  relation='ACL' />
+    <Field name="Allow" type="System.Boolean" />
+    <Field name="Id" type="System.Int32" key="true" sort="desc"  relation='ACL' />
+  </Table>
+  <Table name='SePaSePuLiAcCoLi'>
+    <Field name="UserName" type="System.String" size="128" key="true" sort="asc"  relation='User' />
+    <Field name="Id" type="System.Int32" key="true" sort="asc"  relation='PurchaseLine' />
+  </Table>
+  <Table name='SePaSePuLiAcCoEn'>
+    <Field name="Descriptor" type="System.String" size="128" key="true" sort="asc" />
+    <Field name="UserName" type="System.String" size="128" key="true" sort="asc"  relation='ACL' />
+    <Field name="Allow" type="System.Boolean" />
+    <Field name="Id" type="System.Int32" key="true" sort="asc"  relation='ACL' />
+  </Table>
+  <Table name='SePaSeSeMoUsAcCoLi'>
+    <Field name="UserName" type="System.String" size="128" key="true" sort="asc"  relation='User' />
+    <Field name="Name" type="System.String" size="128" key="true" sort="asc"  relation='ModelUser' />
+  </Table>
+  <Table name='SePaSeSeMoUsAcCoEn'>
+    <Field name="Descriptor" type="System.String" size="128" key="true" sort="asc" />
+    <Field name="UserName" type="System.String" size="128" key="true" sort="asc"  relation='ACL' />
+    <Field name="Allow" type="System.Boolean" />
+    <Field name="Name" type="System.String" size="128" key="true" sort="asc"  relation='ACL' />
+  </Table>
+  <Table name='PlMoUnReSePaUnReOp'>
+    <Field name="EntityType" type="System.String" size="128" key="true" sort="asc" />
+    <Field name="ItemsAllowed" type="System.Int64" />
+    <Field name="IsEnabled" type="System.Boolean" />
+  </Table>
+  <Table name='PlMoUnReSePaUnReGr'>
+    <Field name="Id" type="System.Int64" key="true" sort="desc" identity="true" />
+    <Field name="EntryName" type="System.String" size="128" />
+    <Field name="UndoRedoEntityType" type="System.String" size="128" key="true" sort="asc" />
+    <Field name="UndoRedoRecordId" type="System.Int64" />
+  </Table>
+  <Table name='SePaCuUnRe'>
+    <Field name="UndoRedoId" type="System.Int64" key="true" sort="desc" identity="true" />
+    <Field name="IsCreatedUndoDeletes" type="System.Boolean" />
+    <Field name="IsDeletedUndoCreates" type="System.Boolean" />
+    <Field name="IsUpdatedUndoUpdates" type="System.Boolean" />
+    <Field name="IsUndone" type="System.Boolean" />
+    <Field name="Name" type="System.String" size="256" sort="asc" />
+    <Field name="FullNameOfResponsible" type="System.String" size="512" />
+    <Field name="EmailOfResponsible" type="System.String" size="256" />
+    <Field name="Description" type="System.String" size="256" />
+    <Field name="IsPartner" type="System.Boolean" />
+    <Field name="CompanyName" type="System.String" size="256" />
+    <Field name="VATNo" type="System.String" size="256" />
+    <Field name="Phone" type="System.String" size="128" />
+    <Field name="Address" type="System.String" size="256" />
+    <Field name="PostCode" type="System.String" size="64" />
+    <Field name="City" type="System.String" size="128" />
+    <Field name="Country" type="System.String" size="256" />
+    <Field name="InvoiceAddress" type="System.String" size="256" />
+    <Field name="InvoicePostCode" type="System.String" size="64" />
+    <Field name="InvoiceCity" type="System.String" size="128" />
+    <Field name="InvoiceCountry" type="System.String" size="256" />
+    <Field name="IsPaymentAccepted" type="System.Boolean" />
+    <Field name="LastPaymentDate" type="System.DateTime" />
+    <Field name="Partner_Name" type="System.String" />
+    <Field name="Owner_Name" type="System.String" />
+  </Table>
+  <Table name='SePaPuUnRe'>
+    <Field name="UndoRedoId" type="System.Int64" key="true" sort="desc" identity="true" />
+    <Field name="IsCreatedUndoDeletes" type="System.Boolean" />
+    <Field name="IsDeletedUndoCreates" type="System.Boolean" />
+    <Field name="IsUpdatedUndoUpdates" type="System.Boolean" />
+    <Field name="IsUndone" type="System.Boolean" />
+    <Field name="Id" type="System.Int32" sort="desc" />
+    <Field name="CreationDate" type="System.DateTime" />
+    <Field name="ApiKey_Id" type="System.Guid" />
+    <Field name="Client_Name" type="System.String" />
+    <Field name="Owner_Name" type="System.String" />
+  </Table>
+  <Table name='SePaPuLiUnRe'>
+    <Field name="UndoRedoId" type="System.Int64" key="true" sort="desc" identity="true" />
+    <Field name="IsCreatedUndoDeletes" type="System.Boolean" />
+    <Field name="IsDeletedUndoCreates" type="System.Boolean" />
+    <Field name="IsUpdatedUndoUpdates" type="System.Boolean" />
+    <Field name="IsUndone" type="System.Boolean" />
+    <Field name="Id" type="System.Int32" sort="asc" />
+    <Field name="ProductKey" type="System.String" size="256" />
+    <Field name="ProductDescription" type="System.String" />
+    <Field name="PricePurchased" type="System.Double" />
+    <Field name="RecurrentFeePurchased" type="System.Double" />
+    <Field name="IsPaid" type="System.Boolean" />
+    <Field name="PurchaseOrder_Id" type="System.Int32" />
+    <Field name="Owner_Name" type="System.String" />
+  </Table>
+  <Method name='PaRead' type='read' table='SePaPa' relationName='' />
+  <Method name='PaCreate' type='create' table='SePaPa' relationName='' />
+  <Method name='PaDelete' type='delete' table='SePaPa' relationName='' />
+  <Method name='PaUpdate' type='update' table='SePaPa' relationName='' />
+  <Method name='PaSeByPaNa' type='search' table='SePaPa'>
+    <FilterXPath sortField='UploadDate' sortDirection='desc'><![CDATA[  matches(@PackageName, '$PackageName') ]]></FilterXPath>
+  </Method>
+  <Method name='PaSeByPaNaCount' type='search-count' table='SePaPa'>
+    <FilterXPath sortField='UploadDate' sortDirection='desc'><![CDATA[  matches(@PackageName, '$PackageName') ]]></FilterXPath>
+  </Method>
+  <Method name='PaSeByPaNaPaged' type='search-paged' table='SePaPa'>
+    <FilterXPath sortField='UploadDate' sortDirection='desc'><![CDATA[  matches(@PackageName, '$PackageName') ]]></FilterXPath>
+  </Method>
+  <Method name='LoPaRead' type='read' table='SePaLoPa' relationName='' />
+  <Method name='LoPaCreate' type='create' table='SePaLoPa' relationName='' />
+  <Method name='LoPaDelete' type='delete' table='SePaLoPa' relationName='' />
+  <Method name='LoPaUpdate' type='update' table='SePaLoPa' relationName='' />
+  <Method name='LoPaSeByPaNa' type='search' table='SePaLoPa'>
+    <FilterXPath ><![CDATA[  matches(@PackageName, '$PackageName') ]]></FilterXPath>
+  </Method>
+  <Method name='LoPaSeByPaNaCount' type='search-count' table='SePaLoPa'>
+    <FilterXPath ><![CDATA[  matches(@PackageName, '$PackageName') ]]></FilterXPath>
+  </Method>
+  <Method name='LoPaSeByPaNaPaged' type='search-paged' table='SePaLoPa'>
+    <FilterXPath ><![CDATA[  matches(@PackageName, '$PackageName') ]]></FilterXPath>
+  </Method>
+  <Method name='ApKeRead' type='read' table='SePaApKe' relationName='' />
+  <Method name='ApKeCreate' type='create' table='SePaApKe' relationName='' />
+  <Method name='ApKeDelete' type='delete' table='SePaApKe' relationName='' />
+  <Method name='ApKeUpdate' type='update' table='SePaApKe' relationName='' />
+  <Method name='ApKeSeByCoIn' type='search' table='SePaApKe'>
+    <FilterXPath sortField='IssueDate' sortDirection='desc'><![CDATA[  matches(@CompanyInfo, '$CompanyInfo') ]]></FilterXPath>
+  </Method>
+  <Method name='ApKeSeByCoInCount' type='search-count' table='SePaApKe'>
+    <FilterXPath sortField='IssueDate' sortDirection='desc'><![CDATA[  matches(@CompanyInfo, '$CompanyInfo') ]]></FilterXPath>
+  </Method>
+  <Method name='ApKeSeByCoInPaged' type='search-paged' table='SePaApKe'>
+    <FilterXPath sortField='IssueDate' sortDirection='desc'><![CDATA[  matches(@CompanyInfo, '$CompanyInfo') ]]></FilterXPath>
+  </Method>
+  <Method name='ApExRead' type='read' table='SePaLoApEx' relationName='' />
+  <Method name='ApExCreate' type='create' table='SePaLoApEx' relationName='' />
+  <Method name='ApExDelete' type='delete' table='SePaLoApEx' relationName='' />
+  <Method name='ApExUpdate' type='update' table='SePaLoApEx' relationName='' />
+  <Method name='ApExSeByNa' type='search' table='SePaLoApEx'>
+    <FilterXPath sortField='OnDate' sortDirection='desc'><![CDATA[  matches(@Message, '$Message') ]]></FilterXPath>
+  </Method>
+  <Method name='ApExSeByNaCount' type='search-count' table='SePaLoApEx'>
+    <FilterXPath sortField='OnDate' sortDirection='desc'><![CDATA[  matches(@Message, '$Message') ]]></FilterXPath>
+  </Method>
+  <Method name='ApExSeByNaPaged' type='search-paged' table='SePaLoApEx'>
+    <FilterXPath sortField='OnDate' sortDirection='desc'><![CDATA[  matches(@Message, '$Message') ]]></FilterXPath>
+  </Method>
+  <Method name='ApExSeByNaSo' type='search' table='SePaLoApEx'>
+    <FilterXPath sortField='OnDate' sortDirection='desc'><![CDATA[  matches(@Message, '$Message') and @IsSolved = '$IsSolved' ]]></FilterXPath>
+  </Method>
+  <Method name='ApExSeByNaSoCount' type='search-count' table='SePaLoApEx'>
+    <FilterXPath sortField='OnDate' sortDirection='desc'><![CDATA[  matches(@Message, '$Message') and @IsSolved = '$IsSolved' ]]></FilterXPath>
+  </Method>
+  <Method name='ApExSeByNaSoPaged' type='search-paged' table='SePaLoApEx'>
+    <FilterXPath sortField='OnDate' sortDirection='desc'><![CDATA[  matches(@Message, '$Message') and @IsSolved = '$IsSolved' ]]></FilterXPath>
+  </Method>
+  <Method name='CuRead' type='read' table='SePaCu' relationName='' />
+  <Method name='CuCreate' type='create' table='SePaCu' relationName='' />
+  <Method name='CuDelete' type='delete' table='SePaCu' relationName='' />
+  <Method name='CuUpdate' type='update' table='SePaCu' relationName='' />
+  <Method name='CuSeByNaAnPa' type='search' table='SePaCu'>
+    <FilterXPath sortField='Name' sortDirection='asc'><![CDATA[  matches(@Name, '$Name') and   matches(@IsPartner, '$IsPartner') ]]></FilterXPath>
+  </Method>
+  <Method name='CuSeByNaAnPaCount' type='search-count' table='SePaCu'>
+    <FilterXPath sortField='Name' sortDirection='asc'><![CDATA[  matches(@Name, '$Name') and   matches(@IsPartner, '$IsPartner') ]]></FilterXPath>
+  </Method>
+  <Method name='CuSeByNaAnPaPaged' type='search-paged' table='SePaCu'>
+    <FilterXPath sortField='Name' sortDirection='asc'><![CDATA[  matches(@Name, '$Name') and   matches(@IsPartner, '$IsPartner') ]]></FilterXPath>
+  </Method>
+  <Method name='CuSeByNa' type='search' table='SePaCu'>
+    <FilterXPath sortField='Name' sortDirection='asc'><![CDATA[  matches(@Name, '$Name') ]]></FilterXPath>
+  </Method>
+  <Method name='CuSeByNaCount' type='search-count' table='SePaCu'>
+    <FilterXPath sortField='Name' sortDirection='asc'><![CDATA[  matches(@Name, '$Name') ]]></FilterXPath>
+  </Method>
+  <Method name='CuSeByNaPaged' type='search-paged' table='SePaCu'>
+    <FilterXPath sortField='Name' sortDirection='asc'><![CDATA[  matches(@Name, '$Name') ]]></FilterXPath>
+  </Method>
+  <Method name='CuSeByNaAnPaPa' type='search' table='SePaCu'>
+    <FilterXPath sortField='LastPaymentDate' sortDirection='asc'><![CDATA[  matches(@Name, '$Name') and @IsPaymentAccepted = '$IsPaymentAccepted' ]]></FilterXPath>
+  </Method>
+  <Method name='CuSeByNaAnPaPaCount' type='search-count' table='SePaCu'>
+    <FilterXPath sortField='LastPaymentDate' sortDirection='asc'><![CDATA[  matches(@Name, '$Name') and @IsPaymentAccepted = '$IsPaymentAccepted' ]]></FilterXPath>
+  </Method>
+  <Method name='CuSeByNaAnPaPaPaged' type='search-paged' table='SePaCu'>
+    <FilterXPath sortField='LastPaymentDate' sortDirection='asc'><![CDATA[  matches(@Name, '$Name') and @IsPaymentAccepted = '$IsPaymentAccepted' ]]></FilterXPath>
+  </Method>
+  <Method name='CuUsEnRead' type='read' table='SePaCuUsEn' relationName='' />
+  <Method name='CuUsEnCreate' type='create' table='SePaCuUsEn' relationName='' />
+  <Method name='CuUsEnDelete' type='delete' table='SePaCuUsEn' relationName='' />
+  <Method name='CuUsEnUpdate' type='update' table='SePaCuUsEn' relationName='' />
+
+  <Method name='PuRead' type='read' table='SePaPu' relationName='' />
+  <Method name='PuCreate' type='create' table='SePaPu' relationName='' />
+  <Method name='PuDelete' type='delete' table='SePaPu' relationName='' />
+  <Method name='PuUpdate' type='update' table='SePaPu' relationName='' />
+  <Method name='PuGeAl' type='search' table='SePaPu'>
+    <FilterXPath ><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='PuGeAlCount' type='search-count' table='SePaPu'>
+    <FilterXPath ><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='PuGeAlPaged' type='search-paged' table='SePaPu'>
+    <FilterXPath ><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='PuLiRead' type='read' table='SePaPuLi' relationName='' />
+  <Method name='PuLiCreate' type='create' table='SePaPuLi' relationName='' />
+  <Method name='PuLiDelete' type='delete' table='SePaPuLi' relationName='' />
+  <Method name='PuLiUpdate' type='update' table='SePaPuLi' relationName='' />
+
+  <Method name='MoUsRead' type='read' table='SePaSeMoUs' relationName='' />
+  <Method name='MoUsCreate' type='create' table='SePaSeMoUs' relationName='' />
+  <Method name='MoUsDelete' type='delete' table='SePaSeMoUs' relationName='' />
+  <Method name='MoUsUpdate' type='update' table='SePaSeMoUs' relationName='' />
+  <Method name='MoUsSeByNa' type='search' table='SePaSeMoUs'>
+    <FilterXPath sortField='Name' sortDirection='asc'><![CDATA[  matches(@Name, '$Name') ]]></FilterXPath>
+  </Method>
+  <Method name='MoUsSeByNaCount' type='search-count' table='SePaSeMoUs'>
+    <FilterXPath sortField='Name' sortDirection='asc'><![CDATA[  matches(@Name, '$Name') ]]></FilterXPath>
+  </Method>
+  <Method name='MoUsSeByNaPaged' type='search-paged' table='SePaSeMoUs'>
+    <FilterXPath sortField='Name' sortDirection='asc'><![CDATA[  matches(@Name, '$Name') ]]></FilterXPath>
+  </Method>
+  <Method name='MoUsSeByEm' type='search' table='SePaSeMoUs'>
+    <FilterXPath sortField='Email' sortDirection='asc'><![CDATA[  matches(@Email, '$Email') ]]></FilterXPath>
+  </Method>
+  <Method name='MoUsSeByEmCount' type='search-count' table='SePaSeMoUs'>
+    <FilterXPath sortField='Email' sortDirection='asc'><![CDATA[  matches(@Email, '$Email') ]]></FilterXPath>
+  </Method>
+  <Method name='MoUsSeByEmPaged' type='search-paged' table='SePaSeMoUs'>
+    <FilterXPath sortField='Email' sortDirection='asc'><![CDATA[  matches(@Email, '$Email') ]]></FilterXPath>
+  </Method>
+  <Method name='MoUsSeEnByNaAnEm' type='search' table='SePaSeMoUs'>
+    <FilterXPath sortField='Name' sortDirection='asc'><![CDATA[  matches(@Email, '$Email') and   matches(@Name, '$Name') and @Enabled = '$Enabled' ]]></FilterXPath>
+  </Method>
+  <Method name='MoUsSeEnByNaAnEmCount' type='search-count' table='SePaSeMoUs'>
+    <FilterXPath sortField='Name' sortDirection='asc'><![CDATA[  matches(@Email, '$Email') and   matches(@Name, '$Name') and @Enabled = '$Enabled' ]]></FilterXPath>
+  </Method>
+  <Method name='MoUsSeEnByNaAnEmPaged' type='search-paged' table='SePaSeMoUs'>
+    <FilterXPath sortField='Name' sortDirection='asc'><![CDATA[  matches(@Email, '$Email') and   matches(@Name, '$Name') and @Enabled = '$Enabled' ]]></FilterXPath>
+  </Method>
+  <Method name='MoSeRead' type='read' table='SePaSeMoSe' relationName='' />
+  <Method name='MoSeCreate' type='create' table='SePaSeMoSe' relationName='' />
+  <Method name='MoSeDelete' type='delete' table='SePaSeMoSe' relationName='' />
+  <Method name='MoSeUpdate' type='update' table='SePaSeMoSe' relationName='' />
+
+  <Method name='MoUsRiRead' type='read' table='SePaSeMoUsRi' relationName='' />
+  <Method name='MoUsRiCreate' type='create' table='SePaSeMoUsRi' relationName='' />
+  <Method name='MoUsRiDelete' type='delete' table='SePaSeMoUsRi' relationName='' />
+  <Method name='MoUsRiUpdate' type='update' table='SePaSeMoUsRi' relationName='' />
+  <Method name='MoUsRiGeByNa' type='search' table='SePaSeMoUsRi'>
+    <FilterXPath sortField='Name' sortDirection='asc'><![CDATA[  matches(@Name, '$Name') ]]></FilterXPath>
+  </Method>
+  <Method name='MoUsRiGeByNaCount' type='search-count' table='SePaSeMoUsRi'>
+    <FilterXPath sortField='Name' sortDirection='asc'><![CDATA[  matches(@Name, '$Name') ]]></FilterXPath>
+  </Method>
+  <Method name='MoUsRiGeByNaPaged' type='search-paged' table='SePaSeMoUsRi'>
+    <FilterXPath sortField='Name' sortDirection='asc'><![CDATA[  matches(@Name, '$Name') ]]></FilterXPath>
+  </Method>
+  <Method name='SeRead' type='read' table='SePaSeSe' relationName='' />
+  <Method name='SeCreate' type='create' table='SePaSeSe' relationName='' />
+  <Method name='SeDelete' type='delete' table='SePaSeSe' relationName='' />
+  <Method name='SeUpdate' type='update' table='SePaSeSe' relationName='' />
+
+  <Method name='IPReRead' type='read' table='SePaSeIPRe' relationName='' />
+  <Method name='IPReCreate' type='create' table='SePaSeIPRe' relationName='' />
+  <Method name='IPReDelete' type='delete' table='SePaSeIPRe' relationName='' />
+  <Method name='IPReUpdate' type='update' table='SePaSeIPRe' relationName='' />
+
+  <Method name='IPSeReRead' type='read' table='SePaSeIPSeRe' relationName='' />
+  <Method name='IPSeReCreate' type='create' table='SePaSeIPSeRe' relationName='' />
+  <Method name='IPSeReDelete' type='delete' table='SePaSeIPSeRe' relationName='' />
+  <Method name='IPSeReUpdate' type='update' table='SePaSeIPSeRe' relationName='' />
+
+  <Method name='PaAcCoLiRead' type='read' table='SePaSePaAcCoLi' relationName='' />
+  <Method name='PaAcCoLiCreate' type='create' table='SePaSePaAcCoLi' relationName='' />
+  <Method name='PaAcCoLiDelete' type='delete' table='SePaSePaAcCoLi' relationName='' />
+  <Method name='PaAcCoLiUpdate' type='update' table='SePaSePaAcCoLi' relationName='' />
+
+  <Method name='PaAcCoEnRead' type='read' table='SePaSePaAcCoEn' relationName='' />
+  <Method name='PaAcCoEnCreate' type='create' table='SePaSePaAcCoEn' relationName='' />
+  <Method name='PaAcCoEnDelete' type='delete' table='SePaSePaAcCoEn' relationName='' />
+  <Method name='PaAcCoEnUpdate' type='update' table='SePaSePaAcCoEn' relationName='' />
+
+  <Method name='ApKeAcCoLiRead' type='read' table='SePaSeApKeAcCoLi' relationName='' />
+  <Method name='ApKeAcCoLiCreate' type='create' table='SePaSeApKeAcCoLi' relationName='' />
+  <Method name='ApKeAcCoLiDelete' type='delete' table='SePaSeApKeAcCoLi' relationName='' />
+  <Method name='ApKeAcCoLiUpdate' type='update' table='SePaSeApKeAcCoLi' relationName='' />
+
+  <Method name='ApKeAcCoEnRead' type='read' table='SePaSeApKeAcCoEn' relationName='' />
+  <Method name='ApKeAcCoEnCreate' type='create' table='SePaSeApKeAcCoEn' relationName='' />
+  <Method name='ApKeAcCoEnDelete' type='delete' table='SePaSeApKeAcCoEn' relationName='' />
+  <Method name='ApKeAcCoEnUpdate' type='update' table='SePaSeApKeAcCoEn' relationName='' />
+
+  <Method name='ApExAcCoLiRead' type='read' table='SePaLoSeApExAcCoLi' relationName='' />
+  <Method name='ApExAcCoLiCreate' type='create' table='SePaLoSeApExAcCoLi' relationName='' />
+  <Method name='ApExAcCoLiDelete' type='delete' table='SePaLoSeApExAcCoLi' relationName='' />
+  <Method name='ApExAcCoLiUpdate' type='update' table='SePaLoSeApExAcCoLi' relationName='' />
+
+  <Method name='ApExAcCoEnRead' type='read' table='SePaLoSeApExAcCoEn' relationName='' />
+  <Method name='ApExAcCoEnCreate' type='create' table='SePaLoSeApExAcCoEn' relationName='' />
+  <Method name='ApExAcCoEnDelete' type='delete' table='SePaLoSeApExAcCoEn' relationName='' />
+  <Method name='ApExAcCoEnUpdate' type='update' table='SePaLoSeApExAcCoEn' relationName='' />
+
+  <Method name='CuAcCoLiRead' type='read' table='SePaSeCuAcCoLi' relationName='' />
+  <Method name='CuAcCoLiCreate' type='create' table='SePaSeCuAcCoLi' relationName='' />
+  <Method name='CuAcCoLiDelete' type='delete' table='SePaSeCuAcCoLi' relationName='' />
+  <Method name='CuAcCoLiUpdate' type='update' table='SePaSeCuAcCoLi' relationName='' />
+
+  <Method name='CuAcCoEnRead' type='read' table='SePaSeCuAcCoEn' relationName='' />
+  <Method name='CuAcCoEnCreate' type='create' table='SePaSeCuAcCoEn' relationName='' />
+  <Method name='CuAcCoEnDelete' type='delete' table='SePaSeCuAcCoEn' relationName='' />
+  <Method name='CuAcCoEnUpdate' type='update' table='SePaSeCuAcCoEn' relationName='' />
+
+  <Method name='CuUsEnAcCoLiRead' type='read' table='SePaSeCuUsEnAcCoLi' relationName='' />
+  <Method name='CuUsEnAcCoLiCreate' type='create' table='SePaSeCuUsEnAcCoLi' relationName='' />
+  <Method name='CuUsEnAcCoLiDelete' type='delete' table='SePaSeCuUsEnAcCoLi' relationName='' />
+  <Method name='CuUsEnAcCoLiUpdate' type='update' table='SePaSeCuUsEnAcCoLi' relationName='' />
+
+  <Method name='CuUsEnAcCoEnRead' type='read' table='SePaSeCuUsEnAcCoEn' relationName='' />
+  <Method name='CuUsEnAcCoEnCreate' type='create' table='SePaSeCuUsEnAcCoEn' relationName='' />
+  <Method name='CuUsEnAcCoEnDelete' type='delete' table='SePaSeCuUsEnAcCoEn' relationName='' />
+  <Method name='CuUsEnAcCoEnUpdate' type='update' table='SePaSeCuUsEnAcCoEn' relationName='' />
+
+  <Method name='PuAcCoLiRead' type='read' table='SePaSePuAcCoLi' relationName='' />
+  <Method name='PuAcCoLiCreate' type='create' table='SePaSePuAcCoLi' relationName='' />
+  <Method name='PuAcCoLiDelete' type='delete' table='SePaSePuAcCoLi' relationName='' />
+  <Method name='PuAcCoLiUpdate' type='update' table='SePaSePuAcCoLi' relationName='' />
+
+  <Method name='PuAcCoEnRead' type='read' table='SePaSePuAcCoEn' relationName='' />
+  <Method name='PuAcCoEnCreate' type='create' table='SePaSePuAcCoEn' relationName='' />
+  <Method name='PuAcCoEnDelete' type='delete' table='SePaSePuAcCoEn' relationName='' />
+  <Method name='PuAcCoEnUpdate' type='update' table='SePaSePuAcCoEn' relationName='' />
+
+  <Method name='PuLiAcCoLiRead' type='read' table='SePaSePuLiAcCoLi' relationName='' />
+  <Method name='PuLiAcCoLiCreate' type='create' table='SePaSePuLiAcCoLi' relationName='' />
+  <Method name='PuLiAcCoLiDelete' type='delete' table='SePaSePuLiAcCoLi' relationName='' />
+  <Method name='PuLiAcCoLiUpdate' type='update' table='SePaSePuLiAcCoLi' relationName='' />
+
+  <Method name='PuLiAcCoEnRead' type='read' table='SePaSePuLiAcCoEn' relationName='' />
+  <Method name='PuLiAcCoEnCreate' type='create' table='SePaSePuLiAcCoEn' relationName='' />
+  <Method name='PuLiAcCoEnDelete' type='delete' table='SePaSePuLiAcCoEn' relationName='' />
+  <Method name='PuLiAcCoEnUpdate' type='update' table='SePaSePuLiAcCoEn' relationName='' />
+
+  <Method name='MoUsAcCoLiRead' type='read' table='SePaSeSeMoUsAcCoLi' relationName='' />
+  <Method name='MoUsAcCoLiCreate' type='create' table='SePaSeSeMoUsAcCoLi' relationName='' />
+  <Method name='MoUsAcCoLiDelete' type='delete' table='SePaSeSeMoUsAcCoLi' relationName='' />
+  <Method name='MoUsAcCoLiUpdate' type='update' table='SePaSeSeMoUsAcCoLi' relationName='' />
+
+  <Method name='MoUsAcCoEnRead' type='read' table='SePaSeSeMoUsAcCoEn' relationName='' />
+  <Method name='MoUsAcCoEnCreate' type='create' table='SePaSeSeMoUsAcCoEn' relationName='' />
+  <Method name='MoUsAcCoEnDelete' type='delete' table='SePaSeSeMoUsAcCoEn' relationName='' />
+  <Method name='MoUsAcCoEnUpdate' type='update' table='SePaSeSeMoUsAcCoEn' relationName='' />
+
+  <Method name='UnReOpRead' type='read' table='PlMoUnReSePaUnReOp' relationName='' />
+  <Method name='UnReOpCreate' type='create' table='PlMoUnReSePaUnReOp' relationName='' />
+  <Method name='UnReOpDelete' type='delete' table='PlMoUnReSePaUnReOp' relationName='' />
+  <Method name='UnReOpUpdate' type='update' table='PlMoUnReSePaUnReOp' relationName='' />
+  <Method name='UnReOpSeByEnTy' type='search' table='PlMoUnReSePaUnReOp'>
+    <FilterXPath sortField='EntityType' sortDirection='asc'><![CDATA[  matches(@EntityType, '$EntityType') ]]></FilterXPath>
+  </Method>
+  <Method name='UnReOpSeByEnTyCount' type='search-count' table='PlMoUnReSePaUnReOp'>
+    <FilterXPath sortField='EntityType' sortDirection='asc'><![CDATA[  matches(@EntityType, '$EntityType') ]]></FilterXPath>
+  </Method>
+  <Method name='UnReOpSeByEnTyPaged' type='search-paged' table='PlMoUnReSePaUnReOp'>
+    <FilterXPath sortField='EntityType' sortDirection='asc'><![CDATA[  matches(@EntityType, '$EntityType') ]]></FilterXPath>
+  </Method>
+  <Method name='UnReGrRead' type='read' table='PlMoUnReSePaUnReGr' relationName='' />
+  <Method name='UnReGrCreate' type='create' table='PlMoUnReSePaUnReGr' relationName='' />
+  <Method name='UnReGrDelete' type='delete' table='PlMoUnReSePaUnReGr' relationName='' />
+  <Method name='UnReGrUpdate' type='update' table='PlMoUnReSePaUnReGr' relationName='' />
+  <Method name='UnReGrSeByEnTy' type='search' table='PlMoUnReSePaUnReGr'>
+    <FilterXPath sortField='UndoRedoEntityType' sortDirection='asc'><![CDATA[  matches(@UndoRedoEntityType, '$UndoRedoEntityType') ]]></FilterXPath>
+  </Method>
+  <Method name='UnReGrSeByEnTyCount' type='search-count' table='PlMoUnReSePaUnReGr'>
+    <FilterXPath sortField='UndoRedoEntityType' sortDirection='asc'><![CDATA[  matches(@UndoRedoEntityType, '$UndoRedoEntityType') ]]></FilterXPath>
+  </Method>
+  <Method name='UnReGrSeByEnTyPaged' type='search-paged' table='PlMoUnReSePaUnReGr'>
+    <FilterXPath sortField='UndoRedoEntityType' sortDirection='asc'><![CDATA[  matches(@UndoRedoEntityType, '$UndoRedoEntityType') ]]></FilterXPath>
+  </Method>
+  <Method name='CuUnReRead' type='read' table='SePaCuUnRe' relationName='' />
+  <Method name='CuUnReCreate' type='create' table='SePaCuUnRe' relationName='' />
+  <Method name='CuUnReDelete' type='delete' table='SePaCuUnRe' relationName='' />
+  <Method name='CuUnReUpdate' type='update' table='SePaCuUnRe' relationName='' />
+  <Method name='CuUnReGeAlFiByIsUn' type='search' table='SePaCuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='desc'><![CDATA[@IsUndone = '$IsUndone' ]]></FilterXPath>
+  </Method>
+  <Method name='CuUnReGeAlFiByIsUnCount' type='search-count' table='SePaCuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='desc'><![CDATA[@IsUndone = '$IsUndone' ]]></FilterXPath>
+  </Method>
+  <Method name='CuUnReGeAlFiByIsUnPaged' type='search-paged' table='SePaCuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='desc'><![CDATA[@IsUndone = '$IsUndone' ]]></FilterXPath>
+  </Method>
+  <Method name='CuUnReGeAlFiByIsUnOpOr' type='search' table='SePaCuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='asc'><![CDATA[@IsUndone = '$IsUndone' ]]></FilterXPath>
+  </Method>
+  <Method name='CuUnReGeAlFiByIsUnOpOrCount' type='search-count' table='SePaCuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='asc'><![CDATA[@IsUndone = '$IsUndone' ]]></FilterXPath>
+  </Method>
+  <Method name='CuUnReGeAlFiByIsUnOpOrPaged' type='search-paged' table='SePaCuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='asc'><![CDATA[@IsUndone = '$IsUndone' ]]></FilterXPath>
+  </Method>
+  <Method name='CuUnReGeAlWiNoFiOpSo' type='search' table='SePaCuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='asc'><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='CuUnReGeAlWiNoFiOpSoCount' type='search-count' table='SePaCuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='asc'><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='CuUnReGeAlWiNoFiOpSoPaged' type='search-paged' table='SePaCuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='asc'><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='CuUnReGeAlWiNoFi' type='search' table='SePaCuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='desc'><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='CuUnReGeAlWiNoFiCount' type='search-count' table='SePaCuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='desc'><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='CuUnReGeAlWiNoFiPaged' type='search-paged' table='SePaCuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='desc'><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='PuUnReRead' type='read' table='SePaPuUnRe' relationName='' />
+  <Method name='PuUnReCreate' type='create' table='SePaPuUnRe' relationName='' />
+  <Method name='PuUnReDelete' type='delete' table='SePaPuUnRe' relationName='' />
+  <Method name='PuUnReUpdate' type='update' table='SePaPuUnRe' relationName='' />
+  <Method name='PuUnReGeAlFiByIsUn' type='search' table='SePaPuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='desc'><![CDATA[@IsUndone = '$IsUndone' ]]></FilterXPath>
+  </Method>
+  <Method name='PuUnReGeAlFiByIsUnCount' type='search-count' table='SePaPuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='desc'><![CDATA[@IsUndone = '$IsUndone' ]]></FilterXPath>
+  </Method>
+  <Method name='PuUnReGeAlFiByIsUnPaged' type='search-paged' table='SePaPuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='desc'><![CDATA[@IsUndone = '$IsUndone' ]]></FilterXPath>
+  </Method>
+  <Method name='PuUnReGeAlFiByIsUnOpOr' type='search' table='SePaPuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='asc'><![CDATA[@IsUndone = '$IsUndone' ]]></FilterXPath>
+  </Method>
+  <Method name='PuUnReGeAlFiByIsUnOpOrCount' type='search-count' table='SePaPuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='asc'><![CDATA[@IsUndone = '$IsUndone' ]]></FilterXPath>
+  </Method>
+  <Method name='PuUnReGeAlFiByIsUnOpOrPaged' type='search-paged' table='SePaPuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='asc'><![CDATA[@IsUndone = '$IsUndone' ]]></FilterXPath>
+  </Method>
+  <Method name='PuUnReGeAlWiNoFiOpSo' type='search' table='SePaPuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='asc'><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='PuUnReGeAlWiNoFiOpSoCount' type='search-count' table='SePaPuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='asc'><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='PuUnReGeAlWiNoFiOpSoPaged' type='search-paged' table='SePaPuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='asc'><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='PuUnReGeAlWiNoFi' type='search' table='SePaPuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='desc'><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='PuUnReGeAlWiNoFiCount' type='search-count' table='SePaPuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='desc'><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='PuUnReGeAlWiNoFiPaged' type='search-paged' table='SePaPuUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='desc'><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='PuLiUnReRead' type='read' table='SePaPuLiUnRe' relationName='' />
+  <Method name='PuLiUnReCreate' type='create' table='SePaPuLiUnRe' relationName='' />
+  <Method name='PuLiUnReDelete' type='delete' table='SePaPuLiUnRe' relationName='' />
+  <Method name='PuLiUnReUpdate' type='update' table='SePaPuLiUnRe' relationName='' />
+  <Method name='PuLiUnReGeAlFiByIsUn' type='search' table='SePaPuLiUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='desc'><![CDATA[@IsUndone = '$IsUndone' ]]></FilterXPath>
+  </Method>
+  <Method name='PuLiUnReGeAlFiByIsUnCount' type='search-count' table='SePaPuLiUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='desc'><![CDATA[@IsUndone = '$IsUndone' ]]></FilterXPath>
+  </Method>
+  <Method name='PuLiUnReGeAlFiByIsUnPaged' type='search-paged' table='SePaPuLiUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='desc'><![CDATA[@IsUndone = '$IsUndone' ]]></FilterXPath>
+  </Method>
+  <Method name='PuLiUnReGeAlFiByIsUnOpOr' type='search' table='SePaPuLiUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='asc'><![CDATA[@IsUndone = '$IsUndone' ]]></FilterXPath>
+  </Method>
+  <Method name='PuLiUnReGeAlFiByIsUnOpOrCount' type='search-count' table='SePaPuLiUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='asc'><![CDATA[@IsUndone = '$IsUndone' ]]></FilterXPath>
+  </Method>
+  <Method name='PuLiUnReGeAlFiByIsUnOpOrPaged' type='search-paged' table='SePaPuLiUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='asc'><![CDATA[@IsUndone = '$IsUndone' ]]></FilterXPath>
+  </Method>
+  <Method name='PuLiUnReGeAlWiNoFiOpSo' type='search' table='SePaPuLiUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='asc'><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='PuLiUnReGeAlWiNoFiOpSoCount' type='search-count' table='SePaPuLiUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='asc'><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='PuLiUnReGeAlWiNoFiOpSoPaged' type='search-paged' table='SePaPuLiUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='asc'><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='PuLiUnReGeAlWiNoFi' type='search' table='SePaPuLiUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='desc'><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='PuLiUnReGeAlWiNoFiCount' type='search-count' table='SePaPuLiUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='desc'><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='PuLiUnReGeAlWiNoFiPaged' type='search-paged' table='SePaPuLiUnRe'>
+    <FilterXPath sortField='UndoRedoId' sortDirection='desc'><![CDATA[]]></FilterXPath>
+  </Method>
+  <Method name='PaGetByApKe' type='relation' table='SePaPa' relationName='ApiKey' />
+  <Method name='PaGetByApKeCount' type='relation-count' table='SePaPa' relationName='ApiKey' />
+  <Method name='PaGetByApKePaged' type='relation-paged' table='SePaPa' relationName='ApiKey' />
+  <Method name='PaGetByOw' type='relation' table='SePaPa' relationName='Owner' />
+  <Method name='PaGetByOwCount' type='relation-count' table='SePaPa' relationName='Owner' />
+  <Method name='PaGetByOwPaged' type='relation-paged' table='SePaPa' relationName='Owner' />
+  <Method name='PaSeByPaNaFoApKe' type='search' table='SePaPa'>
+    <FilterXPath sortField='UploadDate' sortDirection='desc'><![CDATA[  matches(@PackageName, '$PackageName')  and @ApiKey_Id = '$ApKeId']]></FilterXPath>
+  </Method>
+  <Method name='PaSeByPaNaFoApKeCount' type='search-count' table='SePaPa'>
+    <FilterXPath sortField='UploadDate' sortDirection='desc'><![CDATA[  matches(@PackageName, '$PackageName')  and @ApiKey_Id = '$ApKeId']]></FilterXPath>
+  </Method>
+  <Method name='PaSeByPaNaFoApKePaged' type='search-paged' table='SePaPa'>
+    <FilterXPath sortField='UploadDate' sortDirection='desc'><![CDATA[  matches(@PackageName, '$PackageName')  and @ApiKey_Id = '$ApKeId']]></FilterXPath>
+  </Method>
+
+
+  <Method name='ApKeGetByCu' type='relation' table='SePaApKe' relationName='Customer' />
+  <Method name='ApKeGetByCuCount' type='relation-count' table='SePaApKe' relationName='Customer' />
+  <Method name='ApKeGetByCuPaged' type='relation-paged' table='SePaApKe' relationName='Customer' />
+  <Method name='ApKeGetByOw' type='relation' table='SePaApKe' relationName='Owner' />
+  <Method name='ApKeGetByOwCount' type='relation-count' table='SePaApKe' relationName='Owner' />
+  <Method name='ApKeGetByOwPaged' type='relation-paged' table='SePaApKe' relationName='Owner' />
+  <Method name='ApKeSeByCoInOnCu' type='search' table='SePaApKe'>
+    <FilterXPath sortField='IssueDate' sortDirection='desc'><![CDATA[  matches(@CompanyInfo, '$CompanyInfo')  and @Customer_Name = '$CuNa']]></FilterXPath>
+  </Method>
+  <Method name='ApKeSeByCoInOnCuCount' type='search-count' table='SePaApKe'>
+    <FilterXPath sortField='IssueDate' sortDirection='desc'><![CDATA[  matches(@CompanyInfo, '$CompanyInfo')  and @Customer_Name = '$CuNa']]></FilterXPath>
+  </Method>
+  <Method name='ApKeSeByCoInOnCuPaged' type='search-paged' table='SePaApKe'>
+    <FilterXPath sortField='IssueDate' sortDirection='desc'><![CDATA[  matches(@CompanyInfo, '$CompanyInfo')  and @Customer_Name = '$CuNa']]></FilterXPath>
+  </Method>
+  <Method name='ApExGetByApKe' type='relation' table='SePaLoApEx' relationName='ApiKey' />
+  <Method name='ApExGetByApKeCount' type='relation-count' table='SePaLoApEx' relationName='ApiKey' />
+  <Method name='ApExGetByApKePaged' type='relation-paged' table='SePaLoApEx' relationName='ApiKey' />
+  <Method name='ApExGetByPaEx' type='relation' table='SePaLoApEx' relationName='ParentException' />
+  <Method name='ApExGetByPaExCount' type='relation-count' table='SePaLoApEx' relationName='ParentException' />
+  <Method name='ApExGetByPaExPaged' type='relation-paged' table='SePaLoApEx' relationName='ParentException' />
+  <Method name='ApExGetByOw' type='relation' table='SePaLoApEx' relationName='Owner' />
+  <Method name='ApExGetByOwCount' type='relation-count' table='SePaLoApEx' relationName='Owner' />
+  <Method name='ApExGetByOwPaged' type='relation-paged' table='SePaLoApEx' relationName='Owner' />
+  <Method name='ApExSeByNaOnApKe' type='search' table='SePaLoApEx'>
+    <FilterXPath sortField='OnDate' sortDirection='desc'><![CDATA[  matches(@Message, '$Message')  and @ApiKey_Id = '$ApKeId']]></FilterXPath>
+  </Method>
+  <Method name='ApExSeByNaOnApKeCount' type='search-count' table='SePaLoApEx'>
+    <FilterXPath sortField='OnDate' sortDirection='desc'><![CDATA[  matches(@Message, '$Message')  and @ApiKey_Id = '$ApKeId']]></FilterXPath>
+  </Method>
+  <Method name='ApExSeByNaOnApKePaged' type='search-paged' table='SePaLoApEx'>
+    <FilterXPath sortField='OnDate' sortDirection='desc'><![CDATA[  matches(@Message, '$Message')  and @ApiKey_Id = '$ApKeId']]></FilterXPath>
+  </Method>
+  <Method name='ApExSeByNaSoOnApKe' type='search' table='SePaLoApEx'>
+    <FilterXPath sortField='OnDate' sortDirection='desc'><![CDATA[  matches(@Message, '$Message') and @IsSolved = '$IsSolved'  and @ApiKey_Id = '$ApKeId']]></FilterXPath>
+  </Method>
+  <Method name='ApExSeByNaSoOnApKeCount' type='search-count' table='SePaLoApEx'>
+    <FilterXPath sortField='OnDate' sortDirection='desc'><![CDATA[  matches(@Message, '$Message') and @IsSolved = '$IsSolved'  and @ApiKey_Id = '$ApKeId']]></FilterXPath>
+  </Method>
+  <Method name='ApExSeByNaSoOnApKePaged' type='search-paged' table='SePaLoApEx'>
+    <FilterXPath sortField='OnDate' sortDirection='desc'><![CDATA[  matches(@Message, '$Message') and @IsSolved = '$IsSolved'  and @ApiKey_Id = '$ApKeId']]></FilterXPath>
+  </Method>
+  <Method name='CuGetByPa' type='relation' table='SePaCu' relationName='Partner' />
+  <Method name='CuGetByPaCount' type='relation-count' table='SePaCu' relationName='Partner' />
+  <Method name='CuGetByPaPaged' type='relation-paged' table='SePaCu' relationName='Partner' />
+  <Method name='CuGetByOw' type='relation' table='SePaCu' relationName='Owner' />
+  <Method name='CuGetByOwCount' type='relation-count' table='SePaCu' relationName='Owner' />
+  <Method name='CuGetByOwPaged' type='relation-paged' table='SePaCu' relationName='Owner' />
+  <Method name='CuSeByNaOnPa' type='search' table='SePaCu'>
+    <FilterXPath sortField='IsPaymentAccepted' sortDirection='desc'><![CDATA[  matches(@Name, '$Name')  and @Partner_Name = '$CuNa']]></FilterXPath>
+  </Method>
+  <Method name='CuSeByNaOnPaCount' type='search-count' table='SePaCu'>
+    <FilterXPath sortField='IsPaymentAccepted' sortDirection='desc'><![CDATA[  matches(@Name, '$Name')  and @Partner_Name = '$CuNa']]></FilterXPath>
+  </Method>
+  <Method name='CuSeByNaOnPaPaged' type='search-paged' table='SePaCu'>
+    <FilterXPath sortField='IsPaymentAccepted' sortDirection='desc'><![CDATA[  matches(@Name, '$Name')  and @Partner_Name = '$CuNa']]></FilterXPath>
+  </Method>
+  <Method name='CuSeByNaAnPaOnPa' type='search' table='SePaCu'>
+    <FilterXPath sortField='LastPaymentDate' sortDirection='asc'><![CDATA[  matches(@Name, '$Name') and @IsPaymentAccepted = '$IsPaymentAccepted'  and @Partner_Name = '$CuNa']]></FilterXPath>
+  </Method>
+  <Method name='CuSeByNaAnPaOnPaCount' type='search-count' table='SePaCu'>
+    <FilterXPath sortField='LastPaymentDate' sortDirection='asc'><![CDATA[  matches(@Name, '$Name') and @IsPaymentAccepted = '$IsPaymentAccepted'  and @Partner_Name = '$CuNa']]></FilterXPath>
+  </Method>
+  <Method name='CuSeByNaAnPaOnPaPaged' type='search-paged' table='SePaCu'>
+    <FilterXPath sortField='LastPaymentDate' sortDirection='asc'><![CDATA[  matches(@Name, '$Name') and @IsPaymentAccepted = '$IsPaymentAccepted'  and @Partner_Name = '$CuNa']]></FilterXPath>
+  </Method>
+  <Method name='CuUsEnGetByUsLo' type='relation' table='SePaCuUsEn' relationName='UserLogin' />
+  <Method name='CuUsEnGetByUsLoCount' type='relation-count' table='SePaCuUsEn' relationName='UserLogin' />
+  <Method name='CuUsEnGetByUsLoPaged' type='relation-paged' table='SePaCuUsEn' relationName='UserLogin' />
+  <Method name='CuUsEnGetByCu' type='relation' table='SePaCuUsEn' relationName='Customer' />
+  <Method name='CuUsEnGetByCuCount' type='relation-count' table='SePaCuUsEn' relationName='Customer' />
+  <Method name='CuUsEnGetByCuPaged' type='relation-paged' table='SePaCuUsEn' relationName='Customer' />
+  <Method name='CuUsEnGetByOw' type='relation' table='SePaCuUsEn' relationName='Owner' />
+  <Method name='CuUsEnGetByOwCount' type='relation-count' table='SePaCuUsEn' relationName='Owner' />
+  <Method name='CuUsEnGetByOwPaged' type='relation-paged' table='SePaCuUsEn' relationName='Owner' />
+
+  <Method name='PuGetByApKe' type='relation' table='SePaPu' relationName='ApiKey' />
+  <Method name='PuGetByApKeCount' type='relation-count' table='SePaPu' relationName='ApiKey' />
+  <Method name='PuGetByApKePaged' type='relation-paged' table='SePaPu' relationName='ApiKey' />
+  <Method name='PuGetByCl' type='relation' table='SePaPu' relationName='Client' />
+  <Method name='PuGetByClCount' type='relation-count' table='SePaPu' relationName='Client' />
+  <Method name='PuGetByClPaged' type='relation-paged' table='SePaPu' relationName='Client' />
+  <Method name='PuGetByOw' type='relation' table='SePaPu' relationName='Owner' />
+  <Method name='PuGetByOwCount' type='relation-count' table='SePaPu' relationName='Owner' />
+  <Method name='PuGetByOwPaged' type='relation-paged' table='SePaPu' relationName='Owner' />
+
+  <Method name='PuLiGetByPuOr' type='relation' table='SePaPuLi' relationName='PurchaseOrder' />
+  <Method name='PuLiGetByPuOrCount' type='relation-count' table='SePaPuLi' relationName='PurchaseOrder' />
+  <Method name='PuLiGetByPuOrPaged' type='relation-paged' table='SePaPuLi' relationName='PurchaseOrder' />
+  <Method name='PuLiGetByOw' type='relation' table='SePaPuLi' relationName='Owner' />
+  <Method name='PuLiGetByOwCount' type='relation-count' table='SePaPuLi' relationName='Owner' />
+  <Method name='PuLiGetByOwPaged' type='relation-paged' table='SePaPuLi' relationName='Owner' />
+
+  <Method name='MoUsGetByOw' type='relation' table='SePaSeMoUs' relationName='Owner' />
+  <Method name='MoUsGetByOwCount' type='relation-count' table='SePaSeMoUs' relationName='Owner' />
+  <Method name='MoUsGetByOwPaged' type='relation-paged' table='SePaSeMoUs' relationName='Owner' />
+
+  <Method name='MoSeGetByUs' type='relation' table='SePaSeMoSe' relationName='User' />
+  <Method name='MoSeGetByUsCount' type='relation-count' table='SePaSeMoSe' relationName='User' />
+  <Method name='MoSeGetByUsPaged' type='relation-paged' table='SePaSeMoSe' relationName='User' />
+
+  <Method name='MoUsRiGetByUs' type='relation' table='SePaSeMoUsRi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='MoUsRiGetByUsCount' type='relation-count' table='SePaSeMoUsRi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='MoUsRiGetByUsPaged' type='relation-paged' table='SePaSeMoUsRi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='MoUsRiGeByNaAnUs' type='search' table='SePaSeMoUsRi'>
+    <FilterXPath sortField='Name' sortDirection='asc'><![CDATA[  matches(@Name, '$Name')  and @UserName = '$MoUsNa']]></FilterXPath>
+  </Method>
+  <Method name='MoUsRiGeByNaAnUsCount' type='search-count' table='SePaSeMoUsRi'>
+    <FilterXPath sortField='Name' sortDirection='asc'><![CDATA[  matches(@Name, '$Name')  and @UserName = '$MoUsNa']]></FilterXPath>
+  </Method>
+  <Method name='MoUsRiGeByNaAnUsPaged' type='search-paged' table='SePaSeMoUsRi'>
+    <FilterXPath sortField='Name' sortDirection='asc'><![CDATA[  matches(@Name, '$Name')  and @UserName = '$MoUsNa']]></FilterXPath>
+  </Method>
+
+
+
+
+  <Method name='IPSeReGetByIP' type='relation' table='SePaSeIPSeRe' relationName='IP' />
+  <Method name='IPSeReGetByIPCount' type='relation-count' table='SePaSeIPSeRe' relationName='IP' />
+  <Method name='IPSeReGetByIPPaged' type='relation-paged' table='SePaSeIPSeRe' relationName='IP' />
+  <Method name='IPSeReGetBySe' type='relation' table='SePaSeIPSeRe' relationName='Session' />
+  <Method name='IPSeReGetBySeCount' type='relation-count' table='SePaSeIPSeRe' relationName='Session' />
+  <Method name='IPSeReGetBySePaged' type='relation-paged' table='SePaSeIPSeRe' relationName='Session' />
+
+  <Method name='PaAcCoLiGetByUs' type='relation' table='SePaSePaAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='PaAcCoLiGetByUsCount' type='relation-count' table='SePaSePaAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='PaAcCoLiGetByUsPaged' type='relation-paged' table='SePaSePaAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='PaAcCoLiGetByPa' type='relation' table='SePaSePaAcCoLi' relationName='Package'>
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='PaAcCoLiGetByPaCount' type='relation-count' table='SePaSePaAcCoLi' relationName='Package'>
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='PaAcCoLiGetByPaPaged' type='relation-paged' table='SePaSePaAcCoLi' relationName='Package'>
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='PaAcCoLiGeACLs' type='search' table='SePaSePaAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Id = '$PaId']]></FilterXPath>
+  </Method>
+  <Method name='PaAcCoLiGeACLsCount' type='search-count' table='SePaSePaAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Id = '$PaId']]></FilterXPath>
+  </Method>
+  <Method name='PaAcCoLiGeACLsPaged' type='search-paged' table='SePaSePaAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Id = '$PaId']]></FilterXPath>
+  </Method>
+  <Method name='PaAcCoEnGetByACL' type='relation' table='SePaSePaAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='PaAcCoEnGetByACLCount' type='relation-count' table='SePaSePaAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='PaAcCoEnGetByACLPaged' type='relation-paged' table='SePaSePaAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='PaAcCoEnGeEn' type='search' table='SePaSePaAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$PaAcCoLiUsNa' and @Id = '$PaAcCoLiId']]></FilterXPath>
+  </Method>
+  <Method name='PaAcCoEnGeEnCount' type='search-count' table='SePaSePaAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$PaAcCoLiUsNa' and @Id = '$PaAcCoLiId']]></FilterXPath>
+  </Method>
+  <Method name='PaAcCoEnGeEnPaged' type='search-paged' table='SePaSePaAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$PaAcCoLiUsNa' and @Id = '$PaAcCoLiId']]></FilterXPath>
+  </Method>
+  <Method name='ApKeAcCoLiGetByUs' type='relation' table='SePaSeApKeAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='ApKeAcCoLiGetByUsCount' type='relation-count' table='SePaSeApKeAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='ApKeAcCoLiGetByUsPaged' type='relation-paged' table='SePaSeApKeAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='ApKeAcCoLiGetByApKe' type='relation' table='SePaSeApKeAcCoLi' relationName='ApiKey'>
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='ApKeAcCoLiGetByApKeCount' type='relation-count' table='SePaSeApKeAcCoLi' relationName='ApiKey'>
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='ApKeAcCoLiGetByApKePaged' type='relation-paged' table='SePaSeApKeAcCoLi' relationName='ApiKey'>
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='ApKeAcCoLiGeACLs' type='search' table='SePaSeApKeAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Id = '$ApKeId']]></FilterXPath>
+  </Method>
+  <Method name='ApKeAcCoLiGeACLsCount' type='search-count' table='SePaSeApKeAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Id = '$ApKeId']]></FilterXPath>
+  </Method>
+  <Method name='ApKeAcCoLiGeACLsPaged' type='search-paged' table='SePaSeApKeAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Id = '$ApKeId']]></FilterXPath>
+  </Method>
+  <Method name='ApKeAcCoEnGetByACL' type='relation' table='SePaSeApKeAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='ApKeAcCoEnGetByACLCount' type='relation-count' table='SePaSeApKeAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='ApKeAcCoEnGetByACLPaged' type='relation-paged' table='SePaSeApKeAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='ApKeAcCoEnGeEn' type='search' table='SePaSeApKeAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$ApKeAcCoLiUsNa' and @Id = '$ApKeAcCoLiId']]></FilterXPath>
+  </Method>
+  <Method name='ApKeAcCoEnGeEnCount' type='search-count' table='SePaSeApKeAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$ApKeAcCoLiUsNa' and @Id = '$ApKeAcCoLiId']]></FilterXPath>
+  </Method>
+  <Method name='ApKeAcCoEnGeEnPaged' type='search-paged' table='SePaSeApKeAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$ApKeAcCoLiUsNa' and @Id = '$ApKeAcCoLiId']]></FilterXPath>
+  </Method>
+  <Method name='ApExAcCoLiGetByUs' type='relation' table='SePaLoSeApExAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='ApExAcCoLiGetByUsCount' type='relation-count' table='SePaLoSeApExAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='ApExAcCoLiGetByUsPaged' type='relation-paged' table='SePaLoSeApExAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='ApExAcCoLiGetByApEx' type='relation' table='SePaLoSeApExAcCoLi' relationName='ApplicationException'>
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='ApExAcCoLiGetByApExCount' type='relation-count' table='SePaLoSeApExAcCoLi' relationName='ApplicationException'>
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='ApExAcCoLiGetByApExPaged' type='relation-paged' table='SePaLoSeApExAcCoLi' relationName='ApplicationException'>
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='ApExAcCoLiGeACLs' type='search' table='SePaLoSeApExAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Id = '$ApExId']]></FilterXPath>
+  </Method>
+  <Method name='ApExAcCoLiGeACLsCount' type='search-count' table='SePaLoSeApExAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Id = '$ApExId']]></FilterXPath>
+  </Method>
+  <Method name='ApExAcCoLiGeACLsPaged' type='search-paged' table='SePaLoSeApExAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Id = '$ApExId']]></FilterXPath>
+  </Method>
+  <Method name='ApExAcCoEnGetByACL' type='relation' table='SePaLoSeApExAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='ApExAcCoEnGetByACLCount' type='relation-count' table='SePaLoSeApExAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='ApExAcCoEnGetByACLPaged' type='relation-paged' table='SePaLoSeApExAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='ApExAcCoEnGeEn' type='search' table='SePaLoSeApExAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$ApExAcCoLiUsNa' and @Id = '$ApExAcCoLiId']]></FilterXPath>
+  </Method>
+  <Method name='ApExAcCoEnGeEnCount' type='search-count' table='SePaLoSeApExAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$ApExAcCoLiUsNa' and @Id = '$ApExAcCoLiId']]></FilterXPath>
+  </Method>
+  <Method name='ApExAcCoEnGeEnPaged' type='search-paged' table='SePaLoSeApExAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$ApExAcCoLiUsNa' and @Id = '$ApExAcCoLiId']]></FilterXPath>
+  </Method>
+  <Method name='CuAcCoLiGetByUs' type='relation' table='SePaSeCuAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='CuAcCoLiGetByUsCount' type='relation-count' table='SePaSeCuAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='CuAcCoLiGetByUsPaged' type='relation-paged' table='SePaSeCuAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='CuAcCoLiGetByCu' type='relation' table='SePaSeCuAcCoLi' relationName='Customer'>
+    <Connection from='Name' to='Name' />
+  </Method>
+  <Method name='CuAcCoLiGetByCuCount' type='relation-count' table='SePaSeCuAcCoLi' relationName='Customer'>
+    <Connection from='Name' to='Name' />
+  </Method>
+  <Method name='CuAcCoLiGetByCuPaged' type='relation-paged' table='SePaSeCuAcCoLi' relationName='Customer'>
+    <Connection from='Name' to='Name' />
+  </Method>
+  <Method name='CuAcCoLiGeACLs' type='search' table='SePaSeCuAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Name = '$CuNa']]></FilterXPath>
+  </Method>
+  <Method name='CuAcCoLiGeACLsCount' type='search-count' table='SePaSeCuAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Name = '$CuNa']]></FilterXPath>
+  </Method>
+  <Method name='CuAcCoLiGeACLsPaged' type='search-paged' table='SePaSeCuAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Name = '$CuNa']]></FilterXPath>
+  </Method>
+  <Method name='CuAcCoEnGetByACL' type='relation' table='SePaSeCuAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Name' to='Name' />
+  </Method>
+  <Method name='CuAcCoEnGetByACLCount' type='relation-count' table='SePaSeCuAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Name' to='Name' />
+  </Method>
+  <Method name='CuAcCoEnGetByACLPaged' type='relation-paged' table='SePaSeCuAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Name' to='Name' />
+  </Method>
+  <Method name='CuAcCoEnGeEn' type='search' table='SePaSeCuAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$CuAcCoLiUsNa' and @Name = '$CuAcCoLiNa']]></FilterXPath>
+  </Method>
+  <Method name='CuAcCoEnGeEnCount' type='search-count' table='SePaSeCuAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$CuAcCoLiUsNa' and @Name = '$CuAcCoLiNa']]></FilterXPath>
+  </Method>
+  <Method name='CuAcCoEnGeEnPaged' type='search-paged' table='SePaSeCuAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$CuAcCoLiUsNa' and @Name = '$CuAcCoLiNa']]></FilterXPath>
+  </Method>
+  <Method name='CuUsEnAcCoLiGetByUs' type='relation' table='SePaSeCuUsEnAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='CuUsEnAcCoLiGetByUsCount' type='relation-count' table='SePaSeCuUsEnAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='CuUsEnAcCoLiGetByUsPaged' type='relation-paged' table='SePaSeCuUsEnAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='CuUsEnAcCoLiGetByCuUsEn' type='relation' table='SePaSeCuUsEnAcCoLi' relationName='CustomerUserEntry'>
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='CuUsEnAcCoLiGetByCuUsEnCount' type='relation-count' table='SePaSeCuUsEnAcCoLi' relationName='CustomerUserEntry'>
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='CuUsEnAcCoLiGetByCuUsEnPaged' type='relation-paged' table='SePaSeCuUsEnAcCoLi' relationName='CustomerUserEntry'>
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='CuUsEnAcCoLiGeACLs' type='search' table='SePaSeCuUsEnAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Id = '$CuUsEnId']]></FilterXPath>
+  </Method>
+  <Method name='CuUsEnAcCoLiGeACLsCount' type='search-count' table='SePaSeCuUsEnAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Id = '$CuUsEnId']]></FilterXPath>
+  </Method>
+  <Method name='CuUsEnAcCoLiGeACLsPaged' type='search-paged' table='SePaSeCuUsEnAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Id = '$CuUsEnId']]></FilterXPath>
+  </Method>
+  <Method name='CuUsEnAcCoEnGetByACL' type='relation' table='SePaSeCuUsEnAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='CuUsEnAcCoEnGetByACLCount' type='relation-count' table='SePaSeCuUsEnAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='CuUsEnAcCoEnGetByACLPaged' type='relation-paged' table='SePaSeCuUsEnAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='CuUsEnAcCoEnGeEn' type='search' table='SePaSeCuUsEnAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$CuUsEnAcCoLiUsNa' and @Id = '$CuUsEnAcCoLiId']]></FilterXPath>
+  </Method>
+  <Method name='CuUsEnAcCoEnGeEnCount' type='search-count' table='SePaSeCuUsEnAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$CuUsEnAcCoLiUsNa' and @Id = '$CuUsEnAcCoLiId']]></FilterXPath>
+  </Method>
+  <Method name='CuUsEnAcCoEnGeEnPaged' type='search-paged' table='SePaSeCuUsEnAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$CuUsEnAcCoLiUsNa' and @Id = '$CuUsEnAcCoLiId']]></FilterXPath>
+  </Method>
+  <Method name='PuAcCoLiGetByUs' type='relation' table='SePaSePuAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='PuAcCoLiGetByUsCount' type='relation-count' table='SePaSePuAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='PuAcCoLiGetByUsPaged' type='relation-paged' table='SePaSePuAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='PuAcCoLiGetByPu' type='relation' table='SePaSePuAcCoLi' relationName='Purchase'>
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='PuAcCoLiGetByPuCount' type='relation-count' table='SePaSePuAcCoLi' relationName='Purchase'>
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='PuAcCoLiGetByPuPaged' type='relation-paged' table='SePaSePuAcCoLi' relationName='Purchase'>
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='PuAcCoLiGeACLs' type='search' table='SePaSePuAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Id = '$PuId']]></FilterXPath>
+  </Method>
+  <Method name='PuAcCoLiGeACLsCount' type='search-count' table='SePaSePuAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Id = '$PuId']]></FilterXPath>
+  </Method>
+  <Method name='PuAcCoLiGeACLsPaged' type='search-paged' table='SePaSePuAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Id = '$PuId']]></FilterXPath>
+  </Method>
+  <Method name='PuAcCoEnGetByACL' type='relation' table='SePaSePuAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='PuAcCoEnGetByACLCount' type='relation-count' table='SePaSePuAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='PuAcCoEnGetByACLPaged' type='relation-paged' table='SePaSePuAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='PuAcCoEnGeEn' type='search' table='SePaSePuAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$PuAcCoLiUsNa' and @Id = '$PuAcCoLiId']]></FilterXPath>
+  </Method>
+  <Method name='PuAcCoEnGeEnCount' type='search-count' table='SePaSePuAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$PuAcCoLiUsNa' and @Id = '$PuAcCoLiId']]></FilterXPath>
+  </Method>
+  <Method name='PuAcCoEnGeEnPaged' type='search-paged' table='SePaSePuAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$PuAcCoLiUsNa' and @Id = '$PuAcCoLiId']]></FilterXPath>
+  </Method>
+  <Method name='PuLiAcCoLiGetByUs' type='relation' table='SePaSePuLiAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='PuLiAcCoLiGetByUsCount' type='relation-count' table='SePaSePuLiAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='PuLiAcCoLiGetByUsPaged' type='relation-paged' table='SePaSePuLiAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='PuLiAcCoLiGetByPuLi' type='relation' table='SePaSePuLiAcCoLi' relationName='PurchaseLine'>
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='PuLiAcCoLiGetByPuLiCount' type='relation-count' table='SePaSePuLiAcCoLi' relationName='PurchaseLine'>
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='PuLiAcCoLiGetByPuLiPaged' type='relation-paged' table='SePaSePuLiAcCoLi' relationName='PurchaseLine'>
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='PuLiAcCoLiGeACLs' type='search' table='SePaSePuLiAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Id = '$PuLiId']]></FilterXPath>
+  </Method>
+  <Method name='PuLiAcCoLiGeACLsCount' type='search-count' table='SePaSePuLiAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Id = '$PuLiId']]></FilterXPath>
+  </Method>
+  <Method name='PuLiAcCoLiGeACLsPaged' type='search-paged' table='SePaSePuLiAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @Id = '$PuLiId']]></FilterXPath>
+  </Method>
+  <Method name='PuLiAcCoEnGetByACL' type='relation' table='SePaSePuLiAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='PuLiAcCoEnGetByACLCount' type='relation-count' table='SePaSePuLiAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='PuLiAcCoEnGetByACLPaged' type='relation-paged' table='SePaSePuLiAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Id' to='Id' />
+  </Method>
+  <Method name='PuLiAcCoEnGeEn' type='search' table='SePaSePuLiAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$PuLiAcCoLiUsNa' and @Id = '$PuLiAcCoLiId']]></FilterXPath>
+  </Method>
+  <Method name='PuLiAcCoEnGeEnCount' type='search-count' table='SePaSePuLiAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$PuLiAcCoLiUsNa' and @Id = '$PuLiAcCoLiId']]></FilterXPath>
+  </Method>
+  <Method name='PuLiAcCoEnGeEnPaged' type='search-paged' table='SePaSePuLiAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$PuLiAcCoLiUsNa' and @Id = '$PuLiAcCoLiId']]></FilterXPath>
+  </Method>
+  <Method name='MoUsAcCoLiGetByUs' type='relation' table='SePaSeSeMoUsAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='MoUsAcCoLiGetByUsCount' type='relation-count' table='SePaSeSeMoUsAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='MoUsAcCoLiGetByUsPaged' type='relation-paged' table='SePaSeSeMoUsAcCoLi' relationName='User'>
+    <Connection from='Name' to='UserName' />
+  </Method>
+  <Method name='MoUsAcCoLiGetByMoUs' type='relation' table='SePaSeSeMoUsAcCoLi' relationName='ModelUser'>
+    <Connection from='Name' to='Name' />
+  </Method>
+  <Method name='MoUsAcCoLiGetByMoUsCount' type='relation-count' table='SePaSeSeMoUsAcCoLi' relationName='ModelUser'>
+    <Connection from='Name' to='Name' />
+  </Method>
+  <Method name='MoUsAcCoLiGetByMoUsPaged' type='relation-paged' table='SePaSeSeMoUsAcCoLi' relationName='ModelUser'>
+    <Connection from='Name' to='Name' />
+  </Method>
+  <Method name='MoUsAcCoLiGeACLs' type='search' table='SePaSeSeMoUsAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @UserName = '$MoUsNa']]></FilterXPath>
+  </Method>
+  <Method name='MoUsAcCoLiGeACLsCount' type='search-count' table='SePaSeSeMoUsAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @UserName = '$MoUsNa']]></FilterXPath>
+  </Method>
+  <Method name='MoUsAcCoLiGeACLsPaged' type='search-paged' table='SePaSeSeMoUsAcCoLi'>
+    <FilterXPath sortField='UserName' sortDirection='asc'><![CDATA[  matches(@UserName, '$UserName')  and @UserName = '$MoUsNa']]></FilterXPath>
+  </Method>
+  <Method name='MoUsAcCoEnGetByACL' type='relation' table='SePaSeSeMoUsAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Name' to='Name' />
+  </Method>
+  <Method name='MoUsAcCoEnGetByACLCount' type='relation-count' table='SePaSeSeMoUsAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Name' to='Name' />
+  </Method>
+  <Method name='MoUsAcCoEnGetByACLPaged' type='relation-paged' table='SePaSeSeMoUsAcCoEn' relationName='ACL'>
+    <Connection from='UserName' to='UserName' />
+    <Connection from='Name' to='Name' />
+  </Method>
+  <Method name='MoUsAcCoEnGeEn' type='search' table='SePaSeSeMoUsAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$MoUsAcCoLiUsNa' and @Name = '$MoUsAcCoLiNa']]></FilterXPath>
+  </Method>
+  <Method name='MoUsAcCoEnGeEnCount' type='search-count' table='SePaSeSeMoUsAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$MoUsAcCoLiUsNa' and @Name = '$MoUsAcCoLiNa']]></FilterXPath>
+  </Method>
+  <Method name='MoUsAcCoEnGeEnPaged' type='search-paged' table='SePaSeSeMoUsAcCoEn'>
+    <FilterXPath sortField='Descriptor' sortDirection='asc'><![CDATA[  matches(@Descriptor, '$Descriptor')  and @UserName = '$MoUsAcCoLiUsNa' and @Name = '$MoUsAcCoLiNa']]></FilterXPath>
+  </Method>
+
+
+
+
+
+
+
+
+
+
+</Schema>

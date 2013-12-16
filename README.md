@@ -1,4 +1,4 @@
-z-wave-micorservice
+z-wave-microservice
 ===================
 
 Z-Wave micro service
