@@ -1,6 +1,7 @@
 ﻿namespace ZHostService.Actions
 {
     using System;
+    using System.Linq;
 
     public sealed class LoadNodeProtocolInfo : Job
     {
@@ -22,12 +23,6 @@
 
             lock (context)
             {
-                Console.WriteLine("\t NodeID:" + Data.NodeId);
-                Console.WriteLine("\t Sleeping:" + sleeping);
-                Console.WriteLine("\t Basic type:" + msg[7]);
-                Console.WriteLine("\t Generic type:" + msg[8]);
-                Console.WriteLine("\t Specific type:" + msg[9]);
-
                 context.Nodes.Add(
                     new ZWaveNode
                     {
@@ -37,6 +32,15 @@
                         GenericType = (ZWaveType.Generic)msg[8],
                         SpecificType = (ZWaveType.Specific)msg[9]
                     });
+#if DEBUG
+                context.WorkUnitContext.LogLine(
+                    "\tNodeID: {0}, Sleeping: {1}, Basic Type: {2}, Generic Type: {3}, Specific Type: {4}",
+                    Data.NodeId,
+                    sleeping,
+                    context.Nodes.Last().Basictype.ToString(),
+                    context.Nodes.Last().GenericType.ToString(),
+                    context.Nodes.Last().SpecificType.ToString());
+#endif
             }
         }
     }

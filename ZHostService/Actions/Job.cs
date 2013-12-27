@@ -21,7 +21,9 @@
 
         protected override TExpectedData ActRemotely(ZWaveContext context)
         {
-            Console.WriteLine("Execute [" + this.GetType().FullName + "]");
+#if DEBUG
+            context.WorkUnitContext.LogLine("Execute [" + this.GetType().FullName + "]");
+#endif
 
             currentContext = context;
             context.EnqueueJob(
@@ -76,7 +78,9 @@
 
         public ZWaveContext Act(ZWaveContext context)
         {
-            Console.WriteLine("Execute [" + this.GetType().FullName + "]");
+#if DEBUG
+            context.WorkUnitContext.LogLine("Execute [" + this.GetType().FullName + "]");
+#endif
 
             currentContext = context;
             context.EnqueueJob(

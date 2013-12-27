@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroServicesStarter", "Mic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZHostService", "ZHostService\ZHostService.csproj", "{1B21B596-F200-45AC-9226-9AE5DD582231}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZWaveTests", "ZWaveTests\ZWaveTests.csproj", "{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,14 @@ Global
 		{1B21B596-F200-45AC-9226-9AE5DD582231}.Integration Test|Any CPU.Build.0 = Release|Any CPU
 		{1B21B596-F200-45AC-9226-9AE5DD582231}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B21B596-F200-45AC-9226-9AE5DD582231}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Deploy|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Deploy|Any CPU.Build.0 = Debug|Any CPU
+		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Integration Test|Any CPU.ActiveCfg = Release|Any CPU
+		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Integration Test|Any CPU.Build.0 = Release|Any CPU
+		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

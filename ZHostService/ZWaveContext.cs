@@ -28,7 +28,7 @@
 
         public byte[] ApplicationVersion;
 
-        private readonly WorkUnitContext workUnitContext;
+        public readonly WorkUnitContext WorkUnitContext;
 
         public List<ZWaveNode> Nodes = new List<ZWaveNode>();
 
@@ -55,7 +55,8 @@
 
         public ZWaveContext(WorkUnitContext workUnitContext = null)
         {
-            this.workUnitContext = workUnitContext;
+            this.WorkUnitContext = workUnitContext;
+
             this.serialPort = new SerialPort
                               {
                                   Parity = Parity.None,
@@ -72,7 +73,7 @@
 
         public void Open()
         {
-            Console.WriteLine("Opening port: " + this.serialPort.PortName);
+            WorkUnitContext.LogLine("Opening port: " + this.serialPort.PortName);
             if (this.serialPort.IsOpen)
             {
                 return;
@@ -99,7 +100,7 @@
 
             if (this.serialPort.IsOpen)
             {
-                Console.WriteLine("Found ZWave controller at port: " + this.serialPort.PortName);
+                WorkUnitContext.LogLine("Found ZWave controller at port: " + this.serialPort.PortName);
                 this.runnerThread.Start();
 
                 return;
@@ -154,8 +155,9 @@
                             // Read rest of the frame
                             this.serialPort.Read(buf, 2, len);
                             var message = Utils.ByteSubstring(buf, 0, (len + 2));
-                            Console.WriteLine("Received: " + Utils.ByteArrayToString(message));
-
+#if DEBUG
+                            WorkUnitContext.LogLine("Received: " + Utils.ByteArrayToString(message));
+#endif
                             // Verify checksum
                             if (message[(message.Length - 1)]
                                 == CalculateChecksum(Utils.ByteSubstring(message, 0, (message.Length - 1))))
@@ -198,7 +200,10 @@
                                     },
                                     0,
                                     1);
-                                Console.WriteLine("Sent: ACK");
+
+#if DEBUG
+                                WorkUnitContext.LogLine("Sent: ACK");
+#endif
                             }
                             else
                             {
@@ -210,20 +215,28 @@
                                     },
                                     0,
                                     1);
-                                Console.WriteLine("Sent: NAK");
+#if DEBUG
+                                WorkUnitContext.LogLine("Sent: NACK");
+#endif
                             }
 
                             break;
                         case ZWaveProtocol.Can:
-                            Console.WriteLine("Received: CAN");
+#if DEBUG
+                            WorkUnitContext.LogLine("Received: CAN");
+#endif
                             break;
                         case ZWaveProtocol.Nak:
-                            Console.WriteLine("Received: NAK");
+#if DEBUG
+                            WorkUnitContext.LogLine("Received: NAK");
+#endif
                             currentJob.AwaitAck = false;
                             currentJob.JobStarted = false;
                             break;
                         case ZWaveProtocol.Ack:
-                            Console.WriteLine("Received: ACK");
+#if DEBUG
+                            WorkUnitContext.LogLine("Received: ACK");
+#endif
                             if (currentJob != null)
                             {
                                 if (currentJob.AwaitAck && !currentJob.AwaitResponse)
@@ -234,7 +247,7 @@
                             }
                             break;
                         default:
-                            Console.WriteLine("Critical error. Out of frame flow.");
+                            WorkUnitContext.LogException(new InvalidOperationException("Critical error. Out of frame flow."));
                             break;
                     }
                 }
@@ -269,7 +282,9 @@
                                 currentJob.Resend = false;
                                 currentJob.AwaitAck = true;
                                 currentJob.SendCount++;
-                                Console.WriteLine("Sent: " + Utils.ByteArrayToString(msg.Message));
+#if DEBUG
+                                WorkUnitContext.LogLine("Sent: " + Utils.ByteArrayToString(msg.Message));
+#endif
                             }
                         }
                     }

@@ -1,8 +1,15 @@
 ﻿[
-	{
+	/*{
 		"Id":"ZWaveContext-Debug",
-		"ServiceName":"ZWaveContext #1",
+		"ServiceName":"ZHostService",
 		"DllPath":"ZHostService.dll",
 		"ContextType":"ZHostService.ZWaveContext",
-	}
+	},*/
+
+	{
+		"Id":"FibaroTest-Debug",
+		"ServiceName":"ZWaveTests",
+		"DllPath":"ZWaveTests.dll",
+		"ContextType":"ZWaveTests.FibaroPlugTest",
+	},
 ]

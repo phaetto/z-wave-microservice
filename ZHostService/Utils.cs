@@ -3,7 +3,7 @@
     using System;
     using System.Linq;
 
-    public static class Utils
+    internal static class Utils
     {
         public static byte[] ByteSubstring(byte[] msg, int from, int length)
         {
