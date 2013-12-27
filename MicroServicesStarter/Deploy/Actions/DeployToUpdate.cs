@@ -6,7 +6,7 @@
     using Chains.Play.Web;
     using Ionic.Zip;
     using MicroServicesStarter.Deploy.Actions.Update;
-    using Services.Communication.Tcp;
+    using Services.Communication.Protocol;
     using Services.Packages.Update;
 
     class DeployToUpdate : IChainableAction<PreparedDeploySetupContext, PreparedDeploySetupContext>

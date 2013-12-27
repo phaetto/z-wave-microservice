@@ -9,7 +9,7 @@
     using Chains.Play;
     using Chains.Play.Web;
     using MicroServicesStarter.ServiceManagement.Debugger;
-    using Services.Communication.Tcp;
+    using Services.Communication.Protocol;
     using Services.Management.Administration.Server;
     using Services.Management.Administration.Update;
     using Services.Management.Administration.Worker;

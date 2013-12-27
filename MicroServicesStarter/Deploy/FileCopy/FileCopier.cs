@@ -56,6 +56,11 @@
                     var searchPath = Path.GetFullPath(fromFolder + Path.GetDirectoryName(directiveNode.Attributes["search"].Value));
                     var results = Directory.GetFiles(searchPath, Path.GetFileName(directiveNode.Attributes["search"].Value), searchOption);
 
+                    if (searchPath[searchPath.Length - 1] == '\\')
+                    {
+                        searchPath = searchPath.Substring(0, searchPath.Length - 1);
+                    }
+
                     var changedFolderToCopy = directiveNode.Attributes["to"] != null
                         ? Path.GetFullPath(toFolder + directiveNode.Attributes["to"].Value)
                         : toFolder;

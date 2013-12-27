@@ -7,7 +7,7 @@
     using Chains;
     using Chains.Play;
     using Chains.Play.Web;
-    using Services.Communication.Tcp;
+    using Services.Communication.Protocol;
     using Services.Management.Administration.Worker;
 
     public sealed class StartAdmin : IChainableAction<AdminSetupContext, AdminSetupContext>

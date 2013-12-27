@@ -2,7 +2,7 @@
 {
     using Chains;
     using Chains.Play.Web;
-    using Services.Communication.Tcp;
+    using Services.Communication.Protocol;
     using Services.Management.Administration.Server;
     using Services.Management.Administration.Update;
     using Services.Management.Administration.Worker;

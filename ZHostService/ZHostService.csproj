@@ -53,11 +53,11 @@
   <ItemGroup>
     <Reference Include="Chains, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Chains.0.9.0.6\lib\Chains.dll</HintPath>
+      <HintPath>..\packages\Chains.0.9.1.0\lib\Chains.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Services.Management.0.9.0.6\lib\Ionic.Zip.dll</HintPath>
+      <HintPath>..\packages\Services.Management.0.9.1.0\lib\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -71,23 +71,23 @@
     </Reference>
     <Reference Include="Services.Communication, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Services.Communication.0.9.0.6\lib\Services.Communication.dll</HintPath>
+      <HintPath>..\packages\Services.Communication.0.9.1.0\lib\Services.Communication.dll</HintPath>
     </Reference>
     <Reference Include="Services.Management, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Services.Management.0.9.0.6\lib\Services.Management.dll</HintPath>
+      <HintPath>..\packages\Services.Management.0.9.1.0\lib\Services.Management.dll</HintPath>
     </Reference>
     <Reference Include="SuperSocket.Common, Version=1.5.1.0, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Services.Management.0.9.0.6\lib\SuperSocket.Common.dll</HintPath>
+      <HintPath>..\packages\Services.Management.0.9.1.0\lib\SuperSocket.Common.dll</HintPath>
     </Reference>
     <Reference Include="SuperSocket.SocketBase, Version=1.5.1.0, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Services.Management.0.9.0.6\lib\SuperSocket.SocketBase.dll</HintPath>
+      <HintPath>..\packages\Services.Management.0.9.1.0\lib\SuperSocket.SocketBase.dll</HintPath>
     </Reference>
     <Reference Include="SuperSocket.SocketEngine, Version=1.5.1.0, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Services.Management.0.9.0.6\lib\SuperSocket.SocketEngine.dll</HintPath>
+      <HintPath>..\packages\Services.Management.0.9.1.0\lib\SuperSocket.SocketEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -129,6 +129,7 @@
     <Compile Include="ZWaveProtocol.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
