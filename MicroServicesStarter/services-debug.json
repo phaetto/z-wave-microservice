@@ -1,10 +1,12 @@
 ﻿[
-	/*{
+	{
 		"Id":"ZWaveContext-Debug",
 		"ServiceName":"ZHostService",
 		"DllPath":"ZHostService.dll",
 		"ContextType":"ZHostService.ZWaveContext",
-	},*/
+		"ContextServerHost": "127.0.0.1",
+		"ContextServerPort": 27123,
+	},
 
 	{
 		"Id":"FibaroTest-Debug",

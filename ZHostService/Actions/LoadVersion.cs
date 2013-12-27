@@ -2,14 +2,19 @@
 {
     public sealed class LoadVersion : Job
     {
+        public LoadVersion(JobData jobData)
+            : base(jobData)
+        {
+            OnReceive += onReceiveVersion;
+        }
+
         public LoadVersion()
-            : base(new JobData
+            : this(new JobData
                    {
                        Function = ZWaveFunction.GetVersion,
                        ExpectedFunction = ZWaveFunction.GetVersion
                    })
         {
-            OnReceive += onReceiveVersion;
         }
 
         private void onReceiveVersion(ZWaveContext context, ZWaveMessage message)

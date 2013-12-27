@@ -1,19 +1,23 @@
 ﻿namespace ZHostService.Actions
 {
-    using System;
     using System.Linq;
 
     public sealed class LoadNodeProtocolInfo : Job
     {
+        public LoadNodeProtocolInfo(JobData jobData)
+            : base(jobData)
+        {
+            OnReceive += onReceiveResponse;
+        }
+
         public LoadNodeProtocolInfo(byte nodeId)
-            : base(new JobData
+            : this(new JobData
                    {
                        Function = ZWaveFunction.GetNodeProtocolInfo,
                        ExpectedFunction = ZWaveFunction.GetNodeProtocolInfo,
                        NodeId = nodeId
                    })
         {
-            OnReceive += onReceiveResponse;
         }
 
         private void onReceiveResponse(ZWaveContext context, ZWaveMessage message)

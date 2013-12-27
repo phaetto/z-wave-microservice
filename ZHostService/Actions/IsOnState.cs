@@ -2,8 +2,14 @@
 {
     public sealed class IsOnState : JobActionWithSerializableData<bool>
     {
+        public IsOnState(JobData jobData)
+            : base(jobData)
+        {
+            OnReceive += onReceiveResponse;
+        }
+
         public IsOnState(byte nodeId)
-            : base(new JobData
+            : this(new JobData
                    {
                        Function = ZWaveFunction.SendData,
                        ExpectedFunction = ZWaveFunction.ApplicationCommandHandler,
@@ -14,7 +20,6 @@
                        ExpectedCommand = ZWaveCommand.Report
                    })
         {
-            OnReceive += onReceiveResponse;
         }
 
         private bool onReceiveResponse(ZWaveContext context, ZWaveMessage message)

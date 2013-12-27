@@ -5,14 +5,19 @@
 
     public sealed class SerialApiInitData : Job
     {
+        public SerialApiInitData(JobData jobData)
+            : base(jobData)
+        {
+            OnReceive += onReceiveMessage;
+        }
+
         public SerialApiInitData()
-            : base(new JobData
+            : this(new JobData
                    {
                        Function = ZWaveFunction.SerialApiInitData,
                        ExpectedFunction = ZWaveFunction.SerialApiInitData
                    })
         {
-            OnReceive += onReceiveMessage;
         }
 
         private void onReceiveMessage(ZWaveContext context, ZWaveMessage message)
@@ -24,7 +29,7 @@
             {
                 for (var j = 0; j < 8; j++)
                 {
-                    if ((response[i] & (0x01<<j)) != 0)
+                    if ((response[i] & (0x01 << j)) != 0)
                     {
                         var nodeId = (byte)((i - 7) * 8 + (j + 1));
                         if (nodeId != context.ControllerId)

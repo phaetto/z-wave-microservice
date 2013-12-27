@@ -1,18 +1,21 @@
 ﻿namespace ZHostService.Actions
 {
-    using System;
-
     public sealed class GetDimState : JobActionWithSerializableData<int>
     {
+        public GetDimState(JobData jobData)
+            : base(jobData)
+        {
+            OnReceive += onReceiveResponse;
+        }
+
         public GetDimState(byte nodeId)
-            : base(new JobData
+            : this(new JobData
                    {
                        Function = ZWaveFunction.GetNodeProtocolInfo,
                        ExpectedFunction = ZWaveFunction.GetNodeProtocolInfo,
                        NodeId = nodeId
                    })
         {
-            OnReceive += onReceiveResponse;
         }
 
         private int onReceiveResponse(ZWaveContext context, ZWaveMessage message)

@@ -2,14 +2,19 @@
 {
     public sealed class LoadMemoryId : Job
     {
+        public LoadMemoryId(JobData jobData)
+            : base(jobData)
+        {
+            OnReceive += LoadMemoryId_OnReceive;
+        }
+
         public LoadMemoryId()
-            : base(new JobData
+            : this(new JobData
                    {
                        Function = ZWaveFunction.MemoryGetId,
                        ExpectedFunction = ZWaveFunction.MemoryGetId
                    })
         {
-            OnReceive += LoadMemoryId_OnReceive;
         }
 
         private void LoadMemoryId_OnReceive(ZWaveContext context, ZWaveMessage message)

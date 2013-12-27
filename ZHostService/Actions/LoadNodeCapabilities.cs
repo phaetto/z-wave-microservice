@@ -5,15 +5,20 @@
 
     public sealed class LoadNodeCapabilities : Job
     {
+        public LoadNodeCapabilities(JobData jobData)
+            : base(jobData)
+        {
+            OnReceive += onReceiveResponse;
+        }
+
         public LoadNodeCapabilities(byte nodeId)
-            : base(new JobData
+            : this(new JobData
                    {
                        Function = ZWaveFunction.GetNodeCapabilities,
                        ExpectedFunction = ZWaveFunction.GetNodeCapabilitiesResponse,
                        NodeId = nodeId
                    })
         {
-            OnReceive += onReceiveResponse;
         }
 
         private void onReceiveResponse(ZWaveContext context, ZWaveMessage message)
