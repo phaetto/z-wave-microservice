@@ -4,14 +4,13 @@
 
     public sealed class ZWaveMessage
     {
-        // I do no know if those are the real names; it should add to 0x05
         private const ZWaveProtocol TransmissionOptions = ZWaveProtocol.Sof | ZWaveProtocol.AutoRoute;
 
         private readonly bool raw;
 
-        private readonly List<byte> _params = new List<byte>();
-
         private readonly byte[] message;
+
+        public List<byte> Params { get; private set; }
 
         public ZWaveMessageType MessageType { get; private set; }
 
@@ -29,13 +28,13 @@
             {
                 if (!this.raw)
                 {
-                    int length = 6;
+                    var length = 6;
                     if (this.NodeId != 0x00) length++;
                     if (this.CommandClass != 0x00) length += 3;
-                    length += this._params.Count;
+                    length += this.Params.Count;
 
                     var message = new byte[length];
-                    int index = 0;
+                    var index = 0;
 
                     message[index++] = (byte)ZWaveProtocol.Sof;
 
@@ -52,14 +51,14 @@
 
                     if (this.CommandClass != 0x00)
                     {
-                        message[index++] = (byte)(2 + _params.Count);
+                        message[index++] = (byte)(2 + Params.Count);
                         message[index++] = (byte)this.CommandClass;
                         message[index++] = (byte)this.Command;
                     }
 
-                    for (int i = 0; i < this._params.Count; i++)
+                    for (int i = 0; i < this.Params.Count; i++)
                     {
-                        message[index++] = this._params[i];
+                        message[index++] = this.Params[i];
                     }
 
                     message[index++] = (byte)TransmissionOptions;
@@ -76,38 +75,49 @@
 
         public void AddParameter(byte param)
         {
-            this._params.Add(param);
+            Params.Add(param);
         }
 
         public void Parse(byte[] message)
         {
-            this.MessageType = (ZWaveMessageType)message[2];
-            this.Function = (ZWaveFunction)message[3];
+            MessageType = (ZWaveMessageType)message[2];
+            Function = (ZWaveFunction)message[3];
 
-            switch (this.Function)
+            switch (Function)
             {
                 case ZWaveFunction.SendData:
-                    this.CommandClass = (ZWaveCommandClass)message[4];
+                    CommandClass = (ZWaveCommandClass)message[4];
                     break;
                 case ZWaveFunction.ApplicationCommandHandler:
-                    this.CommandClass = (ZWaveCommandClass)message[7];
-                    this.Command = (ZWaveCommand)message[8];
+                    NodeId = message[5];
+                    var lengthOfData = message[6] - 2;
+                    CommandClass = (ZWaveCommandClass)message[7];
+                    Command = (ZWaveCommand)message[8];
+                    Params = new List<byte>(Utils.ByteSubstring(message, 8, lengthOfData));
                     break;
                 case ZWaveFunction.AddNodeToNetwork:
-                    this.CommandClass = (ZWaveCommandClass)message[5];
+                    CommandClass = (ZWaveCommandClass)message[5];
                     break;
                 case ZWaveFunction.RemoveNodeFromNetwork:
-                    this.CommandClass = (ZWaveCommandClass)message[5];
+                    CommandClass = (ZWaveCommandClass)message[5];
                     break;
                 default:
-                    this.CommandClass = 0x00;
+                    CommandClass = 0x00;
                     break;
             }
         }
 
-        public ZWaveMessage() { }
+        public ZWaveMessage()
+        {
+            Params = new List<byte>();            
+        }
 
-        public ZWaveMessage(ZWaveMessageType messageType, ZWaveFunction function, byte nodeId = 0x00, ZWaveCommandClass commandClass = 0x00, ZWaveCommand command = 0x00)
+        public ZWaveMessage(
+            ZWaveMessageType messageType,
+            ZWaveFunction function,
+            byte nodeId = 0x00,
+            ZWaveCommandClass commandClass = 0x00,
+            ZWaveCommand command = 0x00)
         {
             this.MessageType = messageType;
             this.Function = function;
@@ -125,6 +135,8 @@
             {
                 this.Command = command;
             }
+
+            Params = new List<byte>();
         }
 
         public ZWaveMessage(byte[] message)
