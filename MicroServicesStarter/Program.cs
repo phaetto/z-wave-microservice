@@ -10,19 +10,14 @@
     static class Program
     {
         private const string MicroServicesStarterFolder = @"..\..\";
+        private const string AdminFolder = @"..\..\..\Admin\";
 
         [STAThread]
         static void Main(string[] args)
         {
             if (args.Length > 0 && args[0] == "--update")
             {
-                var fullPath =
-                    Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, MicroServicesStarterFolder));
-
-                var applicationRepository = new Repository(fullPath);
-
-                applicationRepository.Do(
-                    new UpdateClientApplication("update.msd.am", 12345, fullPath));
+                UpdateApplication();
 
                 return;
             }
@@ -38,6 +33,48 @@
 #else
             Application.Run(new InitForm(SetupType.Release));
 #endif
+        }
+
+        private static void UpdateApplication()
+        {
+            Console.WriteLine("Updating the project...");
+
+            UpdateOnPath(
+                MicroServicesStarterFolder,
+                new[]
+                {
+                    "Developer.MicroServicesStarter"
+                });
+
+            Console.WriteLine("Updating the admin...");
+
+            UpdateOnPath(
+                AdminFolder,
+                new[]
+                {
+                    "Services.Executioner"
+                });
+
+            Console.WriteLine("Done!");
+        }
+
+        private static void UpdateOnPath(string relativePath, string[] packages)
+        {
+            var fullPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath));
+
+            if (!Directory.Exists(fullPath))
+            {
+                Directory.CreateDirectory(fullPath);
+            }
+
+            var applicationRepository = new Repository(fullPath);
+
+            foreach (var package in packages)
+            {
+                applicationRepository.RegisterPackage(package);
+            }
+
+            applicationRepository.Do(new UpdateClientApplication("update.msd.am", 12345, fullPath));
         }
     }
 }
