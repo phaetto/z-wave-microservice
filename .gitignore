@@ -1,7 +1,8 @@
 [Bb]in/
 [Oo]bj/
 [Aa]dmin/
-[Nn]uget/
+[Nn]uget/Packages/
+[Nn]uget/*.nupkg
 *.dbmdl
 *.schemaview
 *.suo
