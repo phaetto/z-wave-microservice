@@ -1,12 +1,12 @@
 ﻿[
 	{
-		"Id":"Example-Integration-Test",
-		"ServiceName":"Example",
-		"DllPath":"Example.dll",
-		"ContextType":"Example.Context",
-		"AdminHost":"localhost",
-		"AdminPort": 11001,
-		"ApiKey":null,
-		"Session":null,
-	}
+		"Id":"ZWaveContext-IntegrationTest",
+		"ServiceName":"ZHostService",
+		"DllPath":"ZHostService.dll",
+		"ContextType":"ZHostService.ZWaveContext",
+		"ContextServerHost": "127.0.0.1",
+		"ContextServerPort": 27124,
+		"AdminHost": "localhost",
+		"AdminPort": 11001
+	},
 ]
