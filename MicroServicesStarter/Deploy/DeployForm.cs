@@ -24,7 +24,7 @@
 
         private void DeployForm_Load(object sender, EventArgs e)
         {
-            deploySetupContext.Parent.Do(new CheckProjectsToPublish());
+            deploySetupContext.Parent.Do(new GatherProjectInfo());
 
             foreach (var project in deploySetupContext.Parent.Projects)
             {

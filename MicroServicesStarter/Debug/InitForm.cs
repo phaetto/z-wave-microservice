@@ -79,16 +79,12 @@
 
         private void integrationTestBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            var jsonFileWithAdminJson = string.Format("admin-{0}.json", setupType.ToString());
             var jsonFileWithStartingServices = string.Format("services-{0}.json", setupType.ToString());
 
-            var adminStartData = Json<StartWorkerData>.Deserialize(File.ReadAllText(jsonFileWithAdminJson));
-
-            adminSetupContext.LogToUi(string.Format("Installing assemblies on server tcp://{0}:{1}...", adminStartData.AdminHost, adminStartData.AdminPort))
-                             .Do(new InstallProjects(adminStartData.AdminHost, adminStartData.AdminPort))
-                             .LogToUi("Starting services on remote server...")
-                             .Do(new StartServices(jsonFileWithStartingServices, adminStartData.AdminHost, adminStartData.AdminPort))
-                             .LogToUi(string.Format("Deployed to tcp://{0}:{1}", adminStartData.AdminHost, adminStartData.AdminPort));
+            adminSetupContext.LogToUi(string.Format("Installing assemblies on their respective servers..."))
+                             .Do(new GatherProjectInfo())
+                             .Do(new InstallAndStartServicesForIntegrationTest(jsonFileWithStartingServices))
+                             .LogToUi("All services deployed and started.");
 
             hasInitialized = true;
         }
@@ -98,7 +94,7 @@
             adminSetupContext.LogToUi("Starting admin process...")
                              .Do(new StartAdmin())
                              .LogToUi("Checking projects...")
-                             .Do(new CheckProjectsToPublish())
+                             .Do(new GatherProjectInfo())
                              .LogToUi("Installing assemblies...")
                              .Do(new InstallProjects())
                              .LogToUi("Starting services...")

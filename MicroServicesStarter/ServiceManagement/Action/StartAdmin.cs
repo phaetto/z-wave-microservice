@@ -8,6 +8,7 @@
     using Chains.Play;
     using Chains.Play.Web;
     using Services.Communication.Protocol;
+    using Services.Management.Administration.Server;
     using Services.Management.Administration.Worker;
 
     public sealed class StartAdmin : IChainableAction<AdminSetupContext, AdminSetupContext>
@@ -20,9 +21,11 @@
         {
             try
             {
-                using (new Client(LocalAdminHost, LocalAdminPort).Do(new OpenConnection()))
+                using (var adminConnection = new Client(LocalAdminHost, LocalAdminPort).Do(new OpenConnection()))
                 {
                     // Admin is open
+                    var adminData = adminConnection.Do(new Send<AdministrationData>(new GetAdministratorData()));
+                    context.AdminProcess = Process.GetProcessById(adminData.ProcessId);
                 }
             }
             catch (SocketException)
