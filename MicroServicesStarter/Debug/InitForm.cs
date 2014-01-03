@@ -2,13 +2,11 @@
 {
     using System;
     using System.ComponentModel;
-    using System.IO;
+    using System.Threading;
     using System.Windows.Forms;
-    using Chains.Play;
     using MicroServicesStarter.Deploy;
     using MicroServicesStarter.ServiceManagement;
     using MicroServicesStarter.ServiceManagement.Action;
-    using Services.Management.Administration.Worker;
 
     public partial class InitForm : Form
     {
@@ -84,9 +82,13 @@
             adminSetupContext.LogToUi(string.Format("Installing assemblies on their respective servers..."))
                              .Do(new GatherProjectInfo())
                              .Do(new InstallAndStartServicesForIntegrationTest(jsonFileWithStartingServices))
-                             .LogToUi("All services deployed and started.");
+                             .LogToUi("All services deployed and starting.");
 
             hasInitialized = true;
+
+            Thread.Sleep(6000);
+
+            CloseDialog();
         }
 
         private void setupLocalEnvironmentBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -102,6 +104,18 @@
                              .LogToUi("Environment is ready. Close this form to shutdown.");
 
             hasInitialized = true;
+        }
+
+        private void CloseDialog()
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(CloseDialog));
+
+                return;
+            }
+
+            Close();
         }
     }
 }

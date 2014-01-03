@@ -33,8 +33,8 @@ Global
 		{1B21B596-F200-45AC-9226-9AE5DD582231}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B21B596-F200-45AC-9226-9AE5DD582231}.Deploy|Any CPU.ActiveCfg = Debug|Any CPU
 		{1B21B596-F200-45AC-9226-9AE5DD582231}.Deploy|Any CPU.Build.0 = Debug|Any CPU
-		{1B21B596-F200-45AC-9226-9AE5DD582231}.Integration Test|Any CPU.ActiveCfg = Release|Any CPU
-		{1B21B596-F200-45AC-9226-9AE5DD582231}.Integration Test|Any CPU.Build.0 = Release|Any CPU
+		{1B21B596-F200-45AC-9226-9AE5DD582231}.Integration Test|Any CPU.ActiveCfg = Integration Test|Any CPU
+		{1B21B596-F200-45AC-9226-9AE5DD582231}.Integration Test|Any CPU.Build.0 = Integration Test|Any CPU
 		{1B21B596-F200-45AC-9226-9AE5DD582231}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B21B596-F200-45AC-9226-9AE5DD582231}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

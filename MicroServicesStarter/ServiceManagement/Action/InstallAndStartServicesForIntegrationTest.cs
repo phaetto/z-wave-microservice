@@ -1,7 +1,6 @@
 ﻿namespace MicroServicesStarter.ServiceManagement.Action
 {
     using System;
-    using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Threading;
@@ -9,7 +8,6 @@
     using Chains.Play;
     using Chains.Play.Web;
     using Ionic.Zip;
-    using MicroServicesStarter.ServiceManagement.Debugger;
     using Services.Communication.Protocol;
     using Services.Management.Administration.Server;
     using Services.Management.Administration.Update;
@@ -32,7 +30,7 @@
 
             foreach (var workerData in servicesToStart)
             {
-                using (var adminConnection = new Client(workerData.AdminHost, workerData.AdminPort).Do(new WaitUntilClientConnects()))
+                using (var adminConnection = new Client(workerData.AdminHost, workerData.AdminPort).Do(new OpenConnection()))
                 {
                     var reports = adminConnection.Do(new Send<GetReportedDataReturnData>(new GetReportedData())).Reports;
                     var repository =
@@ -100,19 +98,6 @@
                             string.Format("Starting service {0}:{1}", workerData.ServiceName, workerData.Id));
 
                         adminConnection.Do(new Send(new StartWorkerProcess(workerData)));
-
-                        if (context.SetupType == SetupType.Debug)
-                        {
-                            context.LogToUi(
-                                string.Format("Attaching to service {0}:{1}", workerData.ServiceName, workerData.Id));
-
-                            var vsProcess = VisualStudioAttacher.GetVisualStudioForSolution(context.SolutionDirectory);
-                            var serviceProcess =
-                                Process.GetProcessesByName("Services.Executioner")
-                                       .OrderByDescending(x => x.StartTime)
-                                       .First();
-                            VisualStudioAttacher.AttachVisualStudioToProcess(vsProcess, serviceProcess);
-                        }
                     }
                     catch (Exception exception)
                     {
