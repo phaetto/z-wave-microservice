@@ -41,8 +41,8 @@ Global
 		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Deploy|Any CPU.ActiveCfg = Debug|Any CPU
 		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Deploy|Any CPU.Build.0 = Debug|Any CPU
-		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Integration Test|Any CPU.ActiveCfg = Release|Any CPU
-		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Integration Test|Any CPU.Build.0 = Release|Any CPU
+		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Integration Test|Any CPU.ActiveCfg = Integration Test|Any CPU
+		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Integration Test|Any CPU.Build.0 = Integration Test|Any CPU
 		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection

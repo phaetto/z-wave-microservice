@@ -1,12 +1,21 @@
 ﻿[
-	{
-		"Id":"ZWaveContext-IntegrationTest",
+	/*{
+		"Id":"ZWaveContext-Debug",
 		"ServiceName":"ZHostService",
 		"DllPath":"ZHostService.dll",
 		"ContextType":"ZHostService.ZWaveContext",
 		"ContextServerHost": "127.0.0.1",
-		"ContextServerPort": 27124,
-		"AdminHost": "localhost",
+		"ContextServerPort": 27123,
+		"AdminHost": "10.0.0.7",
+		"AdminPort": 11001
+	},*/
+
+	{
+		"Id":"FibaroTest-Debug",
+		"ServiceName":"ZWaveTests",
+		"DllPath":"ZWaveTests.dll",
+		"ContextType":"ZWaveTests.FibaroPlugTest",
+		"AdminHost": "10.0.0.7",
 		"AdminPort": 11001
 	},
 ]
