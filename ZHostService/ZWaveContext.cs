@@ -34,16 +34,25 @@
 
         public void OnStart()
         {
-            Open();
-
-            var existingSucNode = Do(new LoadVersion()).Do(new LoadMemoryId()).DoRemotable(new GetSucNodeId());
-
-            if (ControllerId != existingSucNode)
+            try
             {
-                Do(new EnableSuc()).Do(new SetSucNodeid(ControllerId));
-            }
+                Open();
 
-            Do(new SerialApiInitData());
+                var existingSucNode = Do(new LoadVersion()).Do(new LoadMemoryId()).DoRemotable(new GetSucNodeId());
+
+                if (ControllerId != existingSucNode)
+                {
+                    Do(new EnableSuc()).Do(new SetSucNodeid(ControllerId));
+                }
+
+                Do(new SerialApiInitData());
+            }
+            catch (Exception exception)
+            {
+                WorkUnitContext.LogException(exception);
+                WorkUnitContext.ReportToAdmin();
+                WorkUnitContext.Close();
+            }
 
             // Ready event here
         }
