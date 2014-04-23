@@ -82,15 +82,24 @@
 
         public void Open()
         {
-            WorkUnitContext.LogLine("Opening port: " + this.serialPort.PortName);
             if (this.serialPort.IsOpen)
             {
                 return;
             }
 
-            for (var i = 1; i < 5; i++)
+            var portPrefix = "COM";
+            var startNumber = 1;
+            if (AbstractChain.IsMono)
             {
-                var port = "COM" + i;
+                portPrefix = "/dev/ttyUSB";
+                startNumber = 0;
+            }
+
+            for (var i = startNumber; i < 5; i++)
+            {
+                WorkUnitContext.LogLine("Opening port: " + this.serialPort.PortName);
+
+                var port = portPrefix + i;
                 this.serialPort.PortName = port;
 
                 try
