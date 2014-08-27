@@ -1,11 +1,12 @@
-﻿namespace ZHostService.Actions
+﻿namespace Services.ZWaveHost.Actions
 {
     using System;
     using System.Threading;
     using Chains;
     using Chains.Play;
 
-    public class JobActionWithSerializableData<TExpectedData> : RemotableActionWithSerializableData<JobData, TExpectedData, ZWaveContext>
+    public class Job<TExpectedData> : RemotableActionWithData<JobData, TExpectedData, ZWaveContext>
+        where TExpectedData : SerializableSpecification, new()
     {
         private ZWaveContext currentContext;
         private TExpectedData returnObject;
@@ -13,7 +14,7 @@
         protected readonly AutoResetEvent AutoEvent = new AutoResetEvent(false);
         protected event Func<ZWaveContext, ZWaveMessage, TExpectedData> OnReceive;
 
-        public JobActionWithSerializableData(JobData data)
+        public Job(JobData data)
             : base(data)
         {
         }
@@ -32,8 +33,7 @@
                     Data.CommandClass,
                     Data.Command,
                     Data.Parameters,
-                    new ZWaveEventHandler(
-                        Data.ExpectedFunction, onPrivateReceive, Data.ExpectedCommandClass, Data.ExpectedCommand),
+                    new ZWaveEventHandler(Data.ExpectedFunction, onPrivateReceive, Data.ExpectedCommandClass, Data.ExpectedCommand),
                     onCancel: onCancel));
 
             AutoEvent.WaitOne();
@@ -64,14 +64,14 @@
         }
     }
 
-    public class JobWithSerializableData : ReproducibleWithSerializableData<JobData>, IChainableAction<ZWaveContext, ZWaveContext>
+    public class Job : ReproducibleWithData<JobData>, IChainableAction<ZWaveContext, ZWaveContext>
     {
         private ZWaveContext currentContext;
 
         protected readonly AutoResetEvent AutoEvent = new AutoResetEvent(false);
         protected event Action<ZWaveContext, ZWaveMessage> OnReceive;
 
-        public JobWithSerializableData(JobData data)
+        public Job(JobData data)
             : base(data)
         {
         }

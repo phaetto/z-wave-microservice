@@ -1,4 +1,4 @@
-﻿namespace ZHostService.Actions
+﻿namespace Services.ZWaveHost.Actions
 {
     public sealed class LoadVersion : Job
     {

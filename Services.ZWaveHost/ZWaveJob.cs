@@ -1,8 +1,7 @@
 ﻿
-namespace ZHostService
+namespace Services.ZWaveHost
 {
     using System;
-    using System.Collections.Generic;
     using System.Timers;
 
     public class ZWaveJob

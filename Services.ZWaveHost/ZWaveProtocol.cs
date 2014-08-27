@@ -1,4 +1,4 @@
-﻿namespace ZHostService
+﻿namespace Services.ZWaveHost
 {
     internal enum ZWaveProtocol : byte
     {

@@ -1,13 +1,14 @@
-﻿namespace ZHostService.Actions
+﻿namespace Services.ZWaveHost.Actions
 {
-    public sealed class SwitchOff : Job
+    public sealed class SwitchOn : Job
     {
-        public const byte State = 0x00;
+        public const byte State = 0xFF;
 
-        public SwitchOff(byte nodeId)
+        public SwitchOn(byte nodeId)
             : base(new JobData
                    {
                        Function = ZWaveFunction.SendData,
+                       ExpectedFunction = ZWaveFunction.SendData,
                        NodeId = nodeId,
                        CommandClass = ZWaveCommandClass.SwitchBinary,
                        Command = ZWaveCommand.Set,
@@ -19,7 +20,7 @@
         {
         }
 
-        public SwitchOff(JobData data)
+        public SwitchOn(JobData data)
             : base(data)
         {
         }

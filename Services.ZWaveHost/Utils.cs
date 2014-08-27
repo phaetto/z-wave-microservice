@@ -1,4 +1,4 @@
-﻿namespace ZHostService
+﻿namespace Services.ZWaveHost
 {
     using System;
     using System.Linq;

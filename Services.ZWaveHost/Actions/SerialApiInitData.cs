@@ -1,4 +1,4 @@
-﻿namespace ZHostService.Actions
+﻿namespace Services.ZWaveHost.Actions
 {
     using System.Collections.Generic;
     using System.Linq;

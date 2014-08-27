@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Services.ZWaveHost</id>
+    <version>
+      {Version}
+    </version>
+    <authors>Alexander Mantzoukas</authors>
+    <owners>Alexander Mantzoukas</owners>
+    <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>
+      Provides the tools and classes to connect to zwave controllers using serial ports.
+
+      Tested with Aeon Labs Z-Stick controller.
+
+      Supports Mono.
+    </description>
+    <releaseNotes>
+      {ReleaseNotes}
+    </releaseNotes>
+    <copyright>Copyright Alexander Mantzoukas, Modern Software Design 2014</copyright>
+    <tags>Z-Wave, Home-Automation, Micro-Services</tags>
+    <dependencies>
+      <dependency id="Chains" version="0.9.0.6" />
+      <dependency id="Services.Management" version="0.9.0.6" />
+      <dependency id="log4net" version="2.0.0" />
+      <dependency id="Newtonsoft.Json" version="4.5.11" />
+    </dependencies>
+  </metadata>
+</package>

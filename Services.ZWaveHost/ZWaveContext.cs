@@ -1,4 +1,4 @@
-﻿namespace ZHostService
+﻿namespace Services.ZWaveHost
 {
     using System;
     using System.Collections.Generic;
@@ -6,7 +6,7 @@
     using System.Threading;
     using Chains;
     using Services.Management.Administration.Worker;
-    using ZHostService.Actions;
+    using Services.ZWaveHost.Actions;
 
     public class ZWaveContext : Chain<ZWaveContext>, IWorkerEvents, IDisposable
     {
