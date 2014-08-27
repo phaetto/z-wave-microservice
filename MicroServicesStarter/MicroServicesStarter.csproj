@@ -52,11 +52,11 @@
   <ItemGroup>
     <Reference Include="Chains, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Chains.0.9.1.1\lib\Chains.dll</HintPath>
+      <HintPath>..\packages\Chains.0.9.4.1\lib\Chains.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Services.Management.0.9.1.1\lib\Ionic.Zip.dll</HintPath>
+      <HintPath>..\packages\Services.Management.0.9.4.1\lib\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
@@ -70,11 +70,11 @@
     </Reference>
     <Reference Include="Services.Communication, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Services.Communication.0.9.1.1\lib\Services.Communication.dll</HintPath>
+      <HintPath>..\packages\Services.Communication.0.9.4.1\lib\Services.Communication.dll</HintPath>
     </Reference>
     <Reference Include="Services.Management, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Services.Management.0.9.1.1\lib\Services.Management.dll</HintPath>
+      <HintPath>..\packages\Services.Management.0.9.4.1\lib\Services.Management.dll</HintPath>
     </Reference>
     <Reference Include="Services.Packages, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -82,15 +82,15 @@
     </Reference>
     <Reference Include="SuperSocket.Common, Version=1.5.1.0, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Services.Management.0.9.1.1\lib\SuperSocket.Common.dll</HintPath>
+      <HintPath>..\packages\Services.Management.0.9.4.1\lib\SuperSocket.Common.dll</HintPath>
     </Reference>
     <Reference Include="SuperSocket.SocketBase, Version=1.5.1.0, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Services.Management.0.9.1.1\lib\SuperSocket.SocketBase.dll</HintPath>
+      <HintPath>..\packages\Services.Management.0.9.4.1\lib\SuperSocket.SocketBase.dll</HintPath>
     </Reference>
     <Reference Include="SuperSocket.SocketEngine, Version=1.5.1.0, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Services.Management.0.9.1.1\lib\SuperSocket.SocketEngine.dll</HintPath>
+      <HintPath>..\packages\Services.Management.0.9.4.1\lib\SuperSocket.SocketEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -125,6 +125,8 @@
     <Compile Include="Deploy\ReleaseType.cs" />
     <Compile Include="Deploy\Actions\Update\PackageUploadData.cs" />
     <Compile Include="ProjectRegistration.cs" />
+    <Compile Include="ServiceManagement\Action\AttachDebuggerToProcess.cs" />
+    <Compile Include="ServiceManagement\Action\PrepareFiles.cs" />
     <Compile Include="ServiceManagement\Action\GatherProjectInfo.cs" />
     <Compile Include="ServiceManagement\Action\CloseServices.cs" />
     <Compile Include="Deploy\Actions\FillOutNuspecFiles.cs" />
@@ -194,7 +196,9 @@
     <None Include="services-debug.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="EnvDTE">

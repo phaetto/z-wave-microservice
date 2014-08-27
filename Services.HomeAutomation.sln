@@ -9,9 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroServicesStarter", "MicroServicesStarter\MicroServicesStarter.csproj", "{BF459D30-1EF7-4130-9349-ED02750D7BA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZHostService", "ZHostService\ZHostService.csproj", "{1B21B596-F200-45AC-9226-9AE5DD582231}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZWaveTests", "ZWaveTests\ZWaveTests.csproj", "{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.ZWaveHost", "Services.ZWaveHost\Services.ZWaveHost.csproj", "{1B21B596-F200-45AC-9226-9AE5DD582231}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,22 +29,22 @@ Global
 		{BF459D30-1EF7-4130-9349-ED02750D7BA6}.Integration Test|Any CPU.Build.0 = Integration Test|Any CPU
 		{BF459D30-1EF7-4130-9349-ED02750D7BA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF459D30-1EF7-4130-9349-ED02750D7BA6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1B21B596-F200-45AC-9226-9AE5DD582231}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1B21B596-F200-45AC-9226-9AE5DD582231}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1B21B596-F200-45AC-9226-9AE5DD582231}.Deploy|Any CPU.ActiveCfg = Debug|Any CPU
-		{1B21B596-F200-45AC-9226-9AE5DD582231}.Deploy|Any CPU.Build.0 = Debug|Any CPU
-		{1B21B596-F200-45AC-9226-9AE5DD582231}.Integration Test|Any CPU.ActiveCfg = Integration Test|Any CPU
-		{1B21B596-F200-45AC-9226-9AE5DD582231}.Integration Test|Any CPU.Build.0 = Integration Test|Any CPU
-		{1B21B596-F200-45AC-9226-9AE5DD582231}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1B21B596-F200-45AC-9226-9AE5DD582231}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Deploy|Any CPU.ActiveCfg = Debug|Any CPU
-		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Deploy|Any CPU.Build.0 = Debug|Any CPU
+		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Deploy|Any CPU.ActiveCfg = Deploy|Any CPU
+		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Deploy|Any CPU.Build.0 = Deploy|Any CPU
 		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Integration Test|Any CPU.ActiveCfg = Integration Test|Any CPU
 		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Integration Test|Any CPU.Build.0 = Integration Test|Any CPU
 		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED6E223C-608A-4D4D-ACDB-E51A9F3A160A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B21B596-F200-45AC-9226-9AE5DD582231}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B21B596-F200-45AC-9226-9AE5DD582231}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B21B596-F200-45AC-9226-9AE5DD582231}.Deploy|Any CPU.ActiveCfg = Deploy|Any CPU
+		{1B21B596-F200-45AC-9226-9AE5DD582231}.Deploy|Any CPU.Build.0 = Deploy|Any CPU
+		{1B21B596-F200-45AC-9226-9AE5DD582231}.Integration Test|Any CPU.ActiveCfg = Integration Test|Any CPU
+		{1B21B596-F200-45AC-9226-9AE5DD582231}.Integration Test|Any CPU.Build.0 = Integration Test|Any CPU
+		{1B21B596-F200-45AC-9226-9AE5DD582231}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B21B596-F200-45AC-9226-9AE5DD582231}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

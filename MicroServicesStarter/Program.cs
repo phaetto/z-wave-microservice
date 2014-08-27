@@ -1,9 +1,13 @@
 ﻿namespace MicroServicesStarter
 {
     using System;
+    using System.Diagnostics;
     using System.IO;
+    using System.Threading;
     using System.Windows.Forms;
     using MicroServicesStarter.Debug;
+    using MicroServicesStarter.ServiceManagement;
+    using MicroServicesStarter.ServiceManagement.Action;
     using Services.Packages;
     using Services.Packages.Client.Actions;
 
@@ -15,12 +19,33 @@
         [STAThread]
         static void Main(string[] args)
         {
+            // This runs when the update script runs
             if (args.Length > 0 && args[0] == "--update")
             {
                 UpdateApplication();
 
                 return;
             }
+
+#if DEBUG
+            // This runs when we want to smart-debug and sniff if the debugger is attached
+            if (args.Length == 0)
+            {
+                Process.Start(new ProcessStartInfo()
+                {
+                    FileName = "MicroServicesStarter.exe",
+                    Arguments = "--debug",
+                    UseShellExecute = true,
+                });
+
+                return;
+            }
+
+            Thread.Sleep(100);
+
+            // Attach on the process after debugging. This ensures that the application stays on after we stop debugging
+            new AdminSetupContext().Do(new AttachDebuggerToProcess(Process.GetCurrentProcess()));
+#endif
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

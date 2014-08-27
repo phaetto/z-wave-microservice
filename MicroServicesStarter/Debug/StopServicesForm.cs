@@ -2,9 +2,14 @@
 {
     using System;
     using System.ComponentModel;
+    using System.Diagnostics;
+    using System.Net.Sockets;
     using System.Windows.Forms;
+    using Chains.Play.Web;
     using MicroServicesStarter.ServiceManagement;
     using MicroServicesStarter.ServiceManagement.Action;
+    using Services.Communication.Protocol;
+    using Services.Management.Administration.Server;
 
     public partial class StopServicesForm : Form
     {
@@ -27,7 +32,21 @@
 
             if (adminSetupContext.AdminProcess != null)
             {
-                adminSetupContext.AdminProcess.Kill();
+                try
+                {
+                    using (
+                        var adminConnection =
+                            new Client(StartAdmin.LocalAdminHost, StartAdmin.LocalAdminPort).Do(new OpenConnection()))
+                    {
+                        // Admin is open
+                        var adminData = adminConnection.Do(new Send<AdministrationData>(new GetAdministratorData()));
+                        var adminProcess = Process.GetProcessById(adminData.ProcessId);
+                        adminProcess.Kill();
+                    }
+                }
+                catch (SocketException)
+                {
+                }
             }
 
             hasFinished = true;

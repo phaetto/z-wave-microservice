@@ -2,6 +2,7 @@
 {
     using System;
     using System.ComponentModel;
+    using System.Diagnostics;
     using System.Threading;
     using System.Windows.Forms;
     using MicroServicesStarter.Deploy;
@@ -61,6 +62,9 @@
             switch (setupType)
             {
                 case SetupType.Debug:
+                    debugCheckerBackgroundWorker.RunWorkerAsync();
+                    setupLocalEnvironmentBackgroundWorker.RunWorkerAsync();
+                    break;
                 case SetupType.Release:
                     setupLocalEnvironmentBackgroundWorker.RunWorkerAsync();
                     break;
@@ -85,6 +89,7 @@
                              .LogToUi("All services deployed and starting.");
 
             hasInitialized = true;
+            DoNotLetFormToBeAnnoying();
 
             Thread.Sleep(6000);
 
@@ -93,10 +98,12 @@
 
         private void setupLocalEnvironmentBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            adminSetupContext.LogToUi("Starting admin process...")
-                             .Do(new StartAdmin())
-                             .LogToUi("Checking projects...")
+            adminSetupContext.LogToUi("Checking projects...")
                              .Do(new GatherProjectInfo())
+                             .LogToUi("Moving necessary files...")
+                             .Do(new PrepareFiles())
+                             .LogToUi("Starting admin process...")
+                             .Do(new StartAdmin())
                              .LogToUi("Installing assemblies...")
                              .Do(new InstallProjects())
                              .LogToUi("Starting services...")
@@ -104,6 +111,21 @@
                              .LogToUi("Environment is ready. Close this form to shutdown.");
 
             hasInitialized = true;
+            DoNotLetFormToBeAnnoying();
+        }
+
+        private void debugCheckerBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            while (true)
+            {
+                if (hasInitialized && !Debugger.IsAttached)
+                {
+                    CloseDialog();
+                    break;
+                }
+
+                Thread.Sleep(100);
+            }
         }
 
         private void CloseDialog()
@@ -116,6 +138,18 @@
             }
 
             Close();
+        }
+
+        private void DoNotLetFormToBeAnnoying()
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(DoNotLetFormToBeAnnoying));
+
+                return;
+            }
+
+            this.TopMost = false;
         }
     }
 }

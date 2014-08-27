@@ -45,7 +45,7 @@
             // typeLabel
             // 
             this.typeLabel.AutoSize = true;
-            this.typeLabel.Location = new System.Drawing.Point(430, 9);
+            this.typeLabel.Location = new System.Drawing.Point(327, 9);
             this.typeLabel.Name = "typeLabel";
             this.typeLabel.Size = new System.Drawing.Size(27, 13);
             this.typeLabel.TabIndex = 1;
@@ -68,7 +68,7 @@
             this.Controls.Add(this.typeLabel);
             this.Controls.Add(this.nameLabel);
             this.Name = "DeployItem";
-            this.Size = new System.Drawing.Size(510, 32);
+            this.Size = new System.Drawing.Size(500, 32);
             this.ResumeLayout(false);
             this.PerformLayout();
 

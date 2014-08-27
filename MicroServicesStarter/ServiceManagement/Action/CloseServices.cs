@@ -1,5 +1,6 @@
 ﻿namespace MicroServicesStarter.ServiceManagement.Action
 {
+    using System;
     using Chains;
     using Chains.Play.Web;
     using Services.Communication.Protocol;
@@ -42,7 +43,13 @@
 
                     context.LogToUi(string.Format("Deleting service repo {0} with id {1}", report.Value.StartData.ServiceName, report.Key));
 
-                    adminConnection.Do(new Send(new DeleteWorkerProcessEntry(report.Key)));
+                    try
+                    {
+                        adminConnection.Do(new Send(new DeleteWorkerProcessEntry(report.Key)));
+                    }
+                    catch (Exception)
+                    {
+                    }
                 }
             }
 

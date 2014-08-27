@@ -1,9 +1,9 @@
 ﻿[
 	{
 		"Id":"ZWaveContext-Debug",
-		"ServiceName":"ZHostService",
-		"DllPath":"ZHostService.dll",
-		"ContextType":"ZHostService.ZWaveContext",
+		"ServiceName":"Services.ZWaveHost",
+		"DllPath":"Services.ZWaveHost.dll",
+		"ContextType":"Services.ZWaveHost.ZWaveContext",
 		"ContextServerHost": "127.0.0.1",
 		"ContextServerPort": 27123,
 	},

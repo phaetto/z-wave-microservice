@@ -32,6 +32,7 @@
             this.reportLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.integrationTestBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.debugCheckerBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // setupLocalEnvironmentBackgroundWorker
@@ -65,6 +66,10 @@
             // 
             this.integrationTestBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.integrationTestBackgroundWorker_DoWork);
             // 
+            // debugCheckerBackgroundWorker
+            // 
+            this.debugCheckerBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.debugCheckerBackgroundWorker_DoWork);
+            // 
             // InitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -76,6 +81,7 @@
             this.Name = "InitForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Micro-services";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Starter_FormClosing);
             this.Load += new System.EventHandler(this.Starter_Load);
             this.Shown += new System.EventHandler(this.Starter_Shown);
@@ -90,6 +96,7 @@
         private System.Windows.Forms.Label reportLabel;
         private System.Windows.Forms.Label label1;
         private System.ComponentModel.BackgroundWorker integrationTestBackgroundWorker;
+        private System.ComponentModel.BackgroundWorker debugCheckerBackgroundWorker;
     }
 }
 

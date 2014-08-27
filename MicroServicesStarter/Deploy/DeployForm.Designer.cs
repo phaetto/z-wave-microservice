@@ -58,6 +58,7 @@
             // 
             this.projectsFlowLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.projectsFlowLayoutPanel.AutoScroll = true;
             this.projectsFlowLayoutPanel.Location = new System.Drawing.Point(12, 42);
             this.projectsFlowLayoutPanel.Name = "projectsFlowLayoutPanel";
             this.projectsFlowLayoutPanel.Size = new System.Drawing.Size(510, 285);
@@ -203,6 +204,7 @@
             this.Name = "DeployForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Deploy Services";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.DeployForm_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();

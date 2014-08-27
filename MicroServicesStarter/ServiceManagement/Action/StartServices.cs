@@ -1,6 +1,7 @@
 ﻿namespace MicroServicesStarter.ServiceManagement.Action
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.IO;
     using System.Linq;
@@ -16,6 +17,8 @@
 
     public sealed class StartServices : IChainableAction<AdminSetupContext, AdminSetupContext>
     {
+        private const int ProcessDebugAttachRetries = 10;
+
         private string jsonFileWithStartingServices;
 
         private readonly string adminHost;
@@ -37,6 +40,8 @@
             jsonFileWithStartingServices = jsonFileWithStartingServices ?? string.Format("services-{0}.json", context.SetupType.ToString());
 
             var servicesToStart = Json<StartWorkerData[]>.Deserialize(File.ReadAllText(jsonFileWithStartingServices));
+
+            var successfulServices = new Dictionary<string, bool>();
 
             MessageFilter.Register();
             
@@ -62,13 +67,36 @@
 
                         if (context.SetupType == SetupType.Debug)
                         {
-                            context.LogToUi(
-                                string.Format("Attaching to service {0}:{1}", workerData.ServiceName, workerData.Id));
+                            int tries = ProcessDebugAttachRetries;
 
-                            var vsProcess = VisualStudioAttacher.GetVisualStudioForSolution(context.SolutionDirectory);
-                            var serviceProcess = Process.GetProcessesByName("Services.Executioner").OrderByDescending(x => x.StartTime).First();
-                            VisualStudioAttacher.AttachVisualStudioToProcess(vsProcess, serviceProcess);
+                            while (true)
+                            {
+                                try
+                                {
+                                    var triesText = tries != ProcessDebugAttachRetries ? "(Try #" + (ProcessDebugAttachRetries - tries) + ")" : string.Empty;
+                                    context.LogToUi(
+                                        string.Format("Attaching to service {2}{0}:{1}", workerData.ServiceName, workerData.Id, triesText));
+
+                                    var serviceProcess = Process.GetProcessesByName("Services.Executioner").OrderByDescending(x => x.StartTime).First();
+                                    context.Do(new AttachDebuggerToProcess(serviceProcess));
+
+                                    break;
+                                }
+                                catch
+                                {
+                                    if (tries == 0)
+                                    {
+                                        throw;
+                                    }
+
+                                    tries--;
+
+                                    Thread.Sleep(1000);
+                                }
+                            }
                         }
+
+                        successfulServices.Add(workerData.Id, true);
                     }
                     catch (Exception exception)
                     {
@@ -81,10 +109,14 @@
                 {
                     try
                     {
-                        context.LogToUi(
-                            string.Format("Waiting service {0}:{1} to warm up", workerData.ServiceName, workerData.Id));
+                        if (successfulServices.ContainsKey(workerData.Id))
+                        {
+                            context.LogToUi(
+                                string.Format(
+                                    "Waiting service {0}:{1} to warm up", workerData.ServiceName, workerData.Id));
 
-                        adminConnection.Do(new WaitUntilServiceIsUp(workerData.Id));
+                            adminConnection.Do(new WaitUntilServiceIsUp(workerData.Id));
+                        }
                     }
                     catch (Exception exception)
                     {

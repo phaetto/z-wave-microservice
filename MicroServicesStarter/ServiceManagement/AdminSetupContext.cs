@@ -18,7 +18,7 @@
 
         internal Process AdminProcess;
 
-        public AdminSetupContext(Action<string> logMethod, SetupType setupType = SetupType.Debug)
+        public AdminSetupContext(Action<string> logMethod = null, SetupType setupType = SetupType.Debug)
         {
             LogMethod = logMethod;
             SetupType = setupType;
@@ -28,7 +28,10 @@
 
         public AdminSetupContext LogToUi(string text)
         {
-            LogMethod(text);
+            if (LogMethod != null)
+            {
+                LogMethod(text);
+            }
 
             return this;
         }

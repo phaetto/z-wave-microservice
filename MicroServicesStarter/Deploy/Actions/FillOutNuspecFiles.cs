@@ -1,6 +1,7 @@
 ﻿namespace MicroServicesStarter.Deploy.Actions
 {
     using System.IO;
+    using System.Xml;
     using Chains;
 
     public sealed class FillOutNuspecFiles : IChainableAction<PreparedDeploySetupContext, PreparedDeploySetupContext>
@@ -26,6 +27,33 @@
                 nuspecText = nuspecText.Replace("{ReleaseNotes}", context.ReleaseNotes);
 
                 File.WriteAllText(newNuspecFile, nuspecText);
+
+                var packagesConfigFile = string.Format("{0}packages.config", projectRegistration.Directory);
+
+                // Update the packages information
+                if (File.Exists(packagesConfigFile))
+                {
+                    var nugetXmlDocument = new XmlDocument();
+                    nugetXmlDocument.Load(newNuspecFile);
+
+                    var packagesXmlDocument = new XmlDocument();
+                    packagesXmlDocument.Load(packagesConfigFile);
+                    var packageNodes = packagesXmlDocument.SelectNodes("/packages/package");
+                    foreach (XmlNode packageNode in packageNodes)
+                    {
+                        var id = packageNode.Attributes["id"].Value;
+                        var version = packageNode.Attributes["version"].Value;
+
+                        var nugetPackageNode = nugetXmlDocument.SelectSingleNode(string.Format("/package/metadata/dependencies/dependency[@id='{0}']", id));
+
+                        if (nugetPackageNode != null && nugetPackageNode.Attributes["version"].Value != version)
+                        {
+                            nugetPackageNode.Attributes["version"].Value = version;
+                        }
+                    }
+
+                    nugetXmlDocument.Save(newNuspecFile);
+                }
             }
 
             return context;

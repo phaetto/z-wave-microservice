@@ -71,6 +71,7 @@
             this.Name = "StopServicesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Stopping Services";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StopServicesForm_FormClosing);
             this.Load += new System.EventHandler(this.StopServices_Load);
             this.ResumeLayout(false);
