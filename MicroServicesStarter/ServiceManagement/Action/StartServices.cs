@@ -115,7 +115,23 @@
                                 string.Format(
                                     "Waiting service {0}:{1} to warm up", workerData.ServiceName, workerData.Id));
 
-                            adminConnection.Do(new WaitUntilServiceIsUp(workerData.Id));
+                            var waitCycles = 5;
+                            while (true)
+                            {
+                                var reportedDataReturnData = adminConnection.Do(new Send<GetReportedDataReturnData>(new GetReportedData())).Reports;
+
+                                if (!reportedDataReturnData.ContainsKey(workerData.Id)
+                                    || reportedDataReturnData[workerData.Id].WorkerState != WorkUnitState.Running)
+                                {
+                                    if (--waitCycles == 0)
+                                    {
+                                        throw new InvalidOperationException("Service could not be started.");
+                                    }
+                                    Thread.Sleep(5000);
+                                }
+                                else
+                                    break;
+                            }
                         }
                     }
                     catch (Exception exception)

@@ -44,7 +44,28 @@
             Thread.Sleep(100);
 
             // Attach on the process after debugging. This ensures that the application stays on after we stop debugging
-            new AdminSetupContext().Do(new AttachDebuggerToProcess(Process.GetCurrentProcess()));
+            var tries = 10;
+
+            while (true)
+            {
+                try
+                {
+                    new AdminSetupContext().Do(new AttachDebuggerToProcess(Process.GetCurrentProcess()));
+
+                    break;
+                }
+                catch
+                {
+                    if (tries == 0)
+                    {
+                        throw;
+                    }
+
+                    tries--;
+
+                    Thread.Sleep(1000);
+                }
+            }
 #endif
 
             Application.EnableVisualStyles();

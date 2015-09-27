@@ -4,6 +4,7 @@
 [Uu]pdate/Packages/
 [Nn]uget/Packages/
 [Nn]uget/*.nupkg
+/data/
 *.dbmdl
 *.schemaview
 *.suo

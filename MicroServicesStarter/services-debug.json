@@ -8,10 +8,10 @@
 		"ContextServerPort": 27123,
 	},
 
-	{
+	/*{
 		"Id":"FibaroTest-Debug",
 		"ServiceName":"ZWaveTests",
 		"DllPath":"ZWaveTests.dll",
 		"ContextType":"ZWaveTests.FibaroPlugTest",
-	},
+	},*/
 ]

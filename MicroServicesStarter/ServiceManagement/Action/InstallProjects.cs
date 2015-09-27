@@ -3,6 +3,7 @@
     using System.IO;
     using System.Linq;
     using Chains;
+    using Chains.Play;
     using Chains.Play.Web;
     using Ionic.Zip;
     using Services.Communication.Protocol;
@@ -30,8 +31,22 @@
                 var repository =
                     adminConnection.Do(new Send<GetAllRepoServicesReturnData>(new GetAllRepoServices())).RepoServices;
 
-                foreach (var project in context.Projects)
+                var jsonFileWithStartingServices = string.Format("services-{0}.json", context.SetupType.ToString());
+
+                var servicesToStart =
+                    Json<StartWorkerData[]>.Deserialize(File.ReadAllText(jsonFileWithStartingServices))
+                        .Select(x => x.ServiceName)
+                        .Distinct();
+
+                foreach (var serviceName in servicesToStart)
                 {
+                    var project = context.Projects.FirstOrDefault(p => p.Name == serviceName);
+
+                    if (project == null)
+                    {
+                        continue;
+                    }
+
                     if (repository.ContainsKey(project.Name))
                     {
                         context.LogToUi(string.Format("Housekeeping on service {0}...", project.Name));

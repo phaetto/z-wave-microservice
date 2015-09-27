@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MicroServicesStarter</RootNamespace>
     <AssemblyName>MicroServicesStarter</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -30,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Deploy|AnyCPU'">
     <OutputPath>bin\Deploy\</OutputPath>
@@ -39,6 +42,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Integration Test|AnyCPU'">
     <OutputPath>bin\Integration Test\</OutputPath>
@@ -48,15 +52,16 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Chains, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Chains.0.9.4.1\lib\Chains.dll</HintPath>
+      <HintPath>..\packages\Chains.0.10.0.0\lib\Chains.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Services.Management.0.9.4.1\lib\Ionic.Zip.dll</HintPath>
+      <HintPath>..\packages\Services.Management.0.10.0.0\lib\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
@@ -66,31 +71,31 @@
     </Reference>
     <Reference Include="Platform.Runtime, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Services.Packages.0.1.0.4\lib\Platform.Runtime.dll</HintPath>
+      <HintPath>..\packages\Services.Packages.0.1.1.1\lib\Platform.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Services.Communication, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Services.Communication.0.9.4.1\lib\Services.Communication.dll</HintPath>
+      <HintPath>..\packages\Services.Communication.0.10.0.0\lib\Services.Communication.dll</HintPath>
     </Reference>
     <Reference Include="Services.Management, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Services.Management.0.9.4.1\lib\Services.Management.dll</HintPath>
+      <HintPath>..\packages\Services.Management.0.10.0.0\lib\Services.Management.dll</HintPath>
     </Reference>
     <Reference Include="Services.Packages, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Services.Packages.0.1.0.4\lib\Services.Packages.dll</HintPath>
+      <HintPath>..\packages\Services.Packages.0.1.1.1\lib\Services.Packages.dll</HintPath>
     </Reference>
-    <Reference Include="SuperSocket.Common, Version=1.5.1.0, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
+    <Reference Include="SuperSocket.Common, Version=1.6.3.0, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Services.Management.0.9.4.1\lib\SuperSocket.Common.dll</HintPath>
+      <HintPath>..\packages\Services.Management.0.10.0.0\lib\SuperSocket.Common.dll</HintPath>
     </Reference>
-    <Reference Include="SuperSocket.SocketBase, Version=1.5.1.0, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
+    <Reference Include="SuperSocket.SocketBase, Version=1.6.3.0, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Services.Management.0.9.4.1\lib\SuperSocket.SocketBase.dll</HintPath>
+      <HintPath>..\packages\Services.Management.0.10.0.0\lib\SuperSocket.SocketBase.dll</HintPath>
     </Reference>
-    <Reference Include="SuperSocket.SocketEngine, Version=1.5.1.0, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
+    <Reference Include="SuperSocket.SocketEngine, Version=1.6.3.0, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Services.Management.0.9.4.1\lib\SuperSocket.SocketEngine.dll</HintPath>
+      <HintPath>..\packages\Services.Management.0.10.0.0\lib\SuperSocket.SocketEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -180,13 +185,10 @@
     <None Include="admin-debug.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="app.config" />
     <None Include="admin-release.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="schema.dbxml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="schema.dbxml" />
     <None Include="services-integrationtest.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

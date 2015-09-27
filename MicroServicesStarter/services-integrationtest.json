@@ -6,16 +6,16 @@
 		"ContextType":"Services.ZWaveHost.ZWaveContext",
 		"ContextServerHost": "127.0.0.1",
 		"ContextServerPort": 27123,
-		"AdminHost": "10.0.0.7",
+		"AdminHost": "10.0.0.19",
 		"AdminPort": 11001
 	},
 
-	{
+	/*{
 		"Id":"FibaroTest-Debug",
 		"ServiceName":"ZWaveTests",
 		"DllPath":"ZWaveTests.dll",
 		"ContextType":"ZWaveTests.FibaroPlugTest",
-		"AdminHost": "10.0.0.7",
+		"AdminHost": "10.0.0.19",
 		"AdminPort": 11001
-	},
+	},*/
 ]
