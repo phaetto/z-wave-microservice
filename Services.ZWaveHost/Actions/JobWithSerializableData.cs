@@ -18,7 +18,7 @@
         {
         }
 
-        protected override TExpectedData ActRemotely(ZWaveContext context)
+        public override TExpectedData Act(ZWaveContext context)
         {
 #if DEBUG
             context.WorkUnitContext.LogLine("Execute [" + this.GetType().FullName + "]");

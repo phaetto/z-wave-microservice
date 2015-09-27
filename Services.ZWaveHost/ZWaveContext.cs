@@ -38,7 +38,7 @@
             {
                 Open();
 
-                var existingSucNode = Do(new LoadVersion()).Do(new LoadMemoryId()).DoRemotable(new GetSucNodeId());
+                var existingSucNode = Do(new LoadVersion()).Do(new LoadMemoryId()).Do(new GetSucNodeId());
 
                 if (ControllerId != existingSucNode)
                 {
@@ -51,7 +51,7 @@
             {
                 WorkUnitContext.LogException(exception);
                 WorkUnitContext.ReportToAdmin();
-                WorkUnitContext.Close();
+                WorkUnitContext.Stop();
             }
 
             // Ready event here
@@ -129,8 +129,14 @@
 
         public void Close()
         {
-            this.serialPort.Close();
-            this.serialPort.Dispose();
+            try
+            {
+                this.serialPort.Close();
+                this.serialPort.Dispose();
+            }
+            catch
+            {
+            }
         }
 
         private void Run()
